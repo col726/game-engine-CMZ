@@ -1,6 +1,8 @@
 package main;
 
+import java.awt.*;
 import java.awt.event.*;
+import javax.media.opengl.*;
 
 public class DemoGame {
 
