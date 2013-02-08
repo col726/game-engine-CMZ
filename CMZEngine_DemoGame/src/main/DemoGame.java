@@ -7,10 +7,14 @@ import javax.media.opengl.*;
 public class DemoGame {
 
 	private boolean quit = false;
+	private int time = SDL_GetTicks();
+	private int REDRAWING_PERIOD = 20;
+	private int MAX_FRAME_SKIP = 10;
+	
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		CMZEngine DemoEngine = new CMZEngine();
@@ -19,10 +23,6 @@ public class DemoGame {
 		boolean timeForUpdatingPhysics = true;
 		boolean timeForRendering = true;
 		
-		int time = SDL_GetTicks();
-		int REDRAWING_PERIOD = 20;
-		int MAX_FRAME_SKIP = 10;
-		boolean need_to_redraw = true;
 		
 		Object I;
 		
@@ -32,17 +32,13 @@ public class DemoGame {
 		{
 			pollForOSMessages();
 			I = getInput();
-			if(timeForUpdatingAI)
-				DemoEngine.UpdateAI(I);
-			if(timeForUpdatingPhysics)
-				DemoEngine.UpdatePhysics(I);
+			
+			DemoEngine.UpdateAI(I);
+		
+			DemoEngine.UpdatePhysics(I);
 			updateStatistics();
-			if(timeForRendering(DemoEngine, need_to_redraw))
-			{
-				DemoEngine.Render();
-				need_to_redraw = false;
-			}
-			FPSControl();
+
+			FPSControl(DemoEngine);
 			
 			SDL_Delay(1);
 		}
@@ -55,9 +51,11 @@ public class DemoGame {
 		return false;
 	}
 	
-	private static void timeForRendering(CMZEngine game, boolean need_to_redraw) {
+	private void FPSControl(CMZEngine game) {
 		int act_time = SDL_GetTicks();
 		int frames = 0;
+		boolean need_to_redraw = true;
+		
 		while(act_time - time >= REDRAWING_PERIOD && frames<MAX_FRAME_SKIP) {
 			time += REDRAWING_PERIOD;
 			keyboard->cycle();
@@ -68,15 +66,14 @@ public class DemoGame {
 		}
 		if (time < act_time) time = act_time;
 		
-		return need_to_redraw;
+		if(need_to_redraw)
+		{
+			game.Render();
+			need_to_redraw = false;
+		}
 	}
 
 	private static void updateStatistics() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void FPSControl() {
 		// TODO Auto-generated method stub
 		
 	}
