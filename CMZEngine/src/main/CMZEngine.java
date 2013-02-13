@@ -23,18 +23,33 @@ public class CMZEngine {
 	//Only render objects within camera viewpoint
 	public void Render() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Rendering..." + gameObjects.toString());
 	}
 
 
-	public void UpdatePhysics() {
+	public void UpdatePhysics(Object physicsObject) {
 		// TODO Auto-generated method stub
+		System.out.println("Updating Physics..." + physicsObject.toString());
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	
-	public void UpdateAI() {
+	public void UpdateAI(Object aiObject) {
 		// TODO Auto-generated method stub
+		System.out.println("Updating AI..." + aiObject.toString());
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 

@@ -2,19 +2,19 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.media.opengl.*;
+//import javax.media.opengl.*;
 
 public class DemoGame {
 
-	private boolean quit = false;
-	private int time = SDL_GetTicks();
-	private int REDRAWING_PERIOD = 20;
-	private int MAX_FRAME_SKIP = 10;
+	
+	private static int time = 0;
+	private static final int REDRAWING_PERIOD = 20;
+	private static final int MAX_FRAME_SKIP = 10;
 	
 	/**
 	 * @param args
 	 */
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		CMZEngine DemoEngine = new CMZEngine();
@@ -23,6 +23,8 @@ public class DemoGame {
 		boolean timeForUpdatingPhysics = true;
 		boolean timeForRendering = true;
 		
+		boolean quit = false;
+		
 		
 		Object I;
 		
@@ -30,7 +32,7 @@ public class DemoGame {
 		
 		while(!quit)
 		{
-			pollForOSMessages();
+			quit = pollForOSMessages();
 			I = getInput();
 			
 			DemoEngine.UpdateAI(I);
@@ -45,26 +47,41 @@ public class DemoGame {
 
 	}
 
+	private static void SDL_Delay(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static int SDL_GetTicks() {
+		// TODO Auto-generated method stub
+		return 60;
+	}
+
 	private static boolean getInput() {
 		// TODO Auto-generated method stub
 		
 		return false;
 	}
 	
-	private void FPSControl(CMZEngine game) {
+	private static void FPSControl(CMZEngine game) {
 		int act_time = SDL_GetTicks();
 		int frames = 0;
 		boolean need_to_redraw = true;
 		
-		while(act_time - time >= REDRAWING_PERIOD && frames<MAX_FRAME_SKIP) {
+		while(act_time - time >= REDRAWING_PERIOD && frames<MAX_FRAME_SKIP) 
+		{
 			time += REDRAWING_PERIOD;
-			keyboard->cycle();
-			if (!game->cycle(k)) quit = true;
+			
+			//keyboard->cycle();
+			//if (!game->cycle(k)) 
+				//quit = true;
 			act_time = SDL_GetTicks();
 			need_to_redraw = true;
 			frames++;
 		}
-		if (time < act_time) time = act_time;
+		
+		if (time < act_time)
+			time = act_time;
 		
 		if(need_to_redraw)
 		{
@@ -78,23 +95,24 @@ public class DemoGame {
 		
 	}
 
-	private static void pollForOSMessages() {
+	//Note: pollForOSMessages returns true if the game loop should exit
+	private static boolean pollForOSMessages() {
 		// TODO Auto-generated method stub
-		while ( event = SDL_PollEvent() ) {
+		/*while ( event = SDL_PollEvent() ) {
 			switch ( event.type ) {
 				case SDL_KEYDOWN:
 					if (event.key.keysym.sym == SDLK_F12) {
-						quit = true;
+						return true;
 					}
 					break;
 				case SDL_MOUSEBUTTONDOWN:
 					game->MouseClick(event.button.x,event.button.y);
 					break;
 				case SDL_QUIT:
-					quit = true;
-					break;
+					return true;
 			}
-		}
+		}*/
+		return false;
 	}
 
 }
