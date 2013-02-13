@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.Graphics.Camera;
+import main.gameObject.GameObject;
 
 public class CMZEngine {
 	
