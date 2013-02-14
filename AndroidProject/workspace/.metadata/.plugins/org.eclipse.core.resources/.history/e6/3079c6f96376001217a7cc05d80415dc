@@ -1,0 +1,37 @@
+package MainPkg;
+
+public class clsInitialization {
+	  public void InitializeObjects() {
+		    System.out.println("Class - clsInitialization -- function - InitializeObjects");
+		    InitSpriteControl(); 
+		    InitSprite();  
+		    InitAI();
+		    InitAudio();
+		    InitCollisionDT();
+		    InitSpecialFX();
+	  }
+	  public void InitSpriteControl() {
+		  //Setup Keystroke/control cross reference ?.xml
+		    System.out.println("function - InitSpriteControl");
+		  }
+	  public void InitSprite() {
+		  //Setup Keystroke/control cross reference ?.xml
+		    System.out.println("function - InitSprite");
+		  }
+	  public void InitGamePanel() {
+		    System.out.println("function - InitGamePanel");
+		  }
+	  public void InitAI() {
+		    System.out.println("function - InitAI");
+		  }
+	  public void InitAudio() {
+		    System.out.println("function - InitAudio");
+		  }
+	  public void InitCollisionDT() {
+		    System.out.println("function - InitCollisionDT");
+		  }
+	  public void InitSpecialFX() {
+		    System.out.println("function - InitSpecialFX");
+		  }
+}
+

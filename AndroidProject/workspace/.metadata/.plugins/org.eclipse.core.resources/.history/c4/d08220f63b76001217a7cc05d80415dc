@@ -1,0 +1,9 @@
+package MainPkg;
+
+public class MainGameLoop {
+	  public static void main(String[] args) {
+		    System.out.println("MainGameLoop - Main Function");
+		    clsInitialization initmethod = new clsInitialization();
+		    initmethod.InitializeObjects();
+		  }
+}
