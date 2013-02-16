@@ -36,11 +36,14 @@ public class DemoGame {
 			I = getInput();
 			
 			DemoEngine.UpdateAI(I);
-		
+			DemoEngine.addToTextBox("--AI Updated");
+			
 			DemoEngine.UpdatePhysics(I);
+			DemoEngine.addToTextBox("--Physics Updated");
 			updateStatistics();
 
 			FPSControl(DemoEngine);
+			DemoEngine.addToTextBox("--Frames Update");
 			
 			SDL_Delay(1);
 		}
