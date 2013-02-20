@@ -2,6 +2,8 @@ package main.gameObject;
 
 
 
+import org.jbox2d.dynamics.BodyDef;
+
 import main.GameVector;
 import main.Sound.GameSound;
 
@@ -10,9 +12,12 @@ public class GameObject {
 	
 	private GameSound defaultSound;
 	private GameVector position;
+	private BodyDef bodyDef; 
 	
 	public GameObject()
 	{
+		
+		bodyDef = new BodyDef();
 		System.out.println("Created a game Object");
 	}
 

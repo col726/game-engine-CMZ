@@ -2,6 +2,8 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 //import javax.media.opengl.*;
 
 public class DemoGame {
@@ -10,7 +12,7 @@ public class DemoGame {
 	private static int time = 0;
 	private static final int REDRAWING_PERIOD = 20;
 	private static final int MAX_FRAME_SKIP = 10;
-	
+	private static boolean quit2 = false;
 	/**
 	 * @param args
 	 */
@@ -109,7 +111,7 @@ public class DemoGame {
 					game->MouseClick(event.button.x,event.button.y);
 					break;
 				case SDL_QUIT:
-					return true;
+					quit = true;
 			}
 		}*/
 		return false;

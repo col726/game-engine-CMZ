@@ -6,17 +6,28 @@ import java.util.List;
 import main.Graphics.Camera;
 import main.gameObject.GameObject;
 
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.World;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 public class CMZEngine {
 	
 	public Camera gameCamera;
 	private List<GameObject> gameObjects;
 	private GameObject world;
 	
+	private World jBoxWorld;
+	private Vec2 gravity;
+	private boolean doSleep = true;
 	
 	public CMZEngine()
 	{
 		gameCamera = new Camera();
 		gameObjects = new ArrayList<GameObject>();
+		jBoxWorld = new World(gravity, doSleep);
+		
 		System.out.println("You Created a CMZ Engine!");
 	}
 
@@ -59,5 +70,11 @@ public class CMZEngine {
 		// TODO Auto-generated method stub
 		world = new GameObject();
 	}
+	
+	public void registerObject(GameObject g)
+	{
+		gameObjects.add(g);
+	}
+
 
 }
