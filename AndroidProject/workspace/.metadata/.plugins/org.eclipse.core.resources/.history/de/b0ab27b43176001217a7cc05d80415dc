@@ -1,0 +1,7 @@
+package MainPkg;
+
+public class clsInitialization {
+	  public static void InitializeObjects() {
+		    System.out.println("Class - clsInitialization -- function - InitializeObjects");
+		  }
+}
