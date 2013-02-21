@@ -1,7 +1,11 @@
 package main;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Toolkit;
 
 import main.Graphics.Camera;
 import main.gameObject.GameObject;
@@ -17,6 +21,8 @@ public class CMZEngine {
 	public Camera gameCamera;
 	private List<GameObject> gameObjects;
 	private GameObject world;
+	private JFrame GameFrame = new JFrame();
+	private JLabel TextBox = new JLabel();
 	
 	private World jBoxWorld;
 	private Vec2 gravity;
@@ -64,11 +70,29 @@ public class CMZEngine {
 		
 		
 	}
+	
+	
+	public void addToTextBox(String text) {
+		TextBox.setText(TextBox.getText() + "<br>" + text);
+	}
 
 
 	public void Init() {
 		// TODO Auto-generated method stub
 		world = new GameObject();
+		JFrame.setDefaultLookAndFeelDecorated(true);
+		GameFrame.setTitle("My First Swing Application");
+		GameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    JLabel label = new JLabel("Welcome");
+	    TextBox.setText("Init Started...");
+	    GameFrame.add(TextBox);
+	    
+	    
+	    int frameWidth = 500;
+	    int frameHeight = 500;
+	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    GameFrame.setBounds((int) screenSize.getWidth() - frameWidth, 0, frameWidth, frameHeight);
+	    GameFrame.setVisible(true);
 	}
 	
 	public void registerObject(GameObject g)
