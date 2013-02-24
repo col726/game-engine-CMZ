@@ -39,6 +39,8 @@ public class CMZEngine {
     private final int velocityIterations = 6;
     private final int positionIterations = 2;
     
+    private BodyDef dynamicBodyDef;
+    private BodyDef staticBodyDef;
     
 	public CMZEngine()
 	{
@@ -100,7 +102,7 @@ public class CMZEngine {
 
 	public void Init() {
 		// TODO Auto-generated method stub
-		world = new GameObject();
+		//world = new GameObject();
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		GameFrame.setTitle("My First Swing Application");
 		GameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,11 +119,11 @@ public class CMZEngine {
 	    
 	    groundBody.createFixture(groundBox, 0.0f);
 	    
-	    BodyDef bodyDef = new BodyDef();
-	    bodyDef.type = BodyType.DYNAMIC;
-	    bodyDef.position.set(0.0f, 4.0f);
+	    dynamicBodyDef = new BodyDef();
+	    dynamicBodyDef.type = BodyType.DYNAMIC;
+	    dynamicBodyDef.position.set(0.0f, 4.0f);
 	    
-	    body = this.jBoxWorld.createBody(bodyDef);
+	    body = this.jBoxWorld.createBody(dynamicBodyDef);
 	    
 	    PolygonShape dynamicShape = new PolygonShape();
 	    dynamicShape.setAsBox(1.0f, 1.0f);
@@ -141,8 +143,13 @@ public class CMZEngine {
 	    GameFrame.setVisible(true);
 	}
 	
-	public void registerObject(GameObject g)
+	public void createObject(int x, int y, boolean isMovable)
 	{
+		GameObject g = new GameObject(x,y);
+		if (isMovable)
+			g.setGameBody(this.jBoxWorld.createBody(dynamicBodyDef));
+		else
+			g.setGameBody(this.jBoxWorld.createBody(staticBodyDef));
 		gameObjects.add(g);
 	}
 
