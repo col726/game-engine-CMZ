@@ -3,18 +3,33 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
 		<item value="119" key="DIALOG_Y_ORIGIN"/>
+<<<<<<< HEAD
 		<item value="380" key="DIALOG_HEIGHT"/>
 		<item value="392" key="DIALOG_X_ORIGIN"/>
+=======
+		<item value="392" key="DIALOG_X_ORIGIN"/>
+		<item value="380" key="DIALOG_HEIGHT"/>
+>>>>>>> b92d6ed331ca87f8a485021ea4fd6565a06564da
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
+<<<<<<< HEAD
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
 		<item value="initmethod" key="selection"/>
 		<list key="findhistory">
+=======
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="paintComponent" key="selection"/>
+		<list key="findhistory">
+			<item value="paintComponent"/>
+>>>>>>> b92d6ed331ca87f8a485021ea4fd6565a06564da
 			<item value="initmethod"/>
 		</list>
 		<list key="replacehistory">

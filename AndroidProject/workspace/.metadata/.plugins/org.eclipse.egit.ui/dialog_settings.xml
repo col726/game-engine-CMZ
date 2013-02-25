@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
+=======
+	<item value="C:\Users\Mike\Documents\GitHub\game-engine-CMZ\.git" key="GitSelectRepositoryPage.lastRepository"/>
+>>>>>>> b92d6ed331ca87f8a485021ea4fd6565a06564da
 	<item value="0" key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel"/>
 	<list key="RepositorySelectionPage.UsedUris">
 		<item value="file:///C:\Users\Mike\Documents\GitHub\game-engine-CMZ\.git"/>
@@ -9,8 +13,13 @@
 	<section name="org.eclipse.egit.ui.internal.fetch.FetchResultDialog.dialogBounds">
 		<item value="616" key="DIALOG_WIDTH"/>
 		<item value="60" key="DIALOG_Y_ORIGIN"/>
+<<<<<<< HEAD
 		<item value="204" key="DIALOG_X_ORIGIN"/>
 		<item value="457" key="DIALOG_HEIGHT"/>
+=======
+		<item value="457" key="DIALOG_HEIGHT"/>
+		<item value="204" key="DIALOG_X_ORIGIN"/>
+>>>>>>> b92d6ed331ca87f8a485021ea4fd6565a06564da
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 </section>

@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 task-tag-projects-already-scanned=TestGameLoop
+=======
+modelmanager.maxWaitDuringConcurrentLoad=30000
+task-tag-projects-already-scanned=TestGameLoop,jbox2d-testbed,TestJavaGame
+>>>>>>> b92d6ed331ca87f8a485021ea4fd6565a06564da
