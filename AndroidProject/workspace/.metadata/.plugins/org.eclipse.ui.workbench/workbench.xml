@@ -47,6 +47,7 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -55,17 +56,21 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/World/src/clsWorld.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="28" selectionOffset="277" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Screen.java" partName="Screen.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/AndroidProject/workspace/World/src/Screen.java" title="Screen.java" tooltip="World/src/Screen.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/World/src/Screen.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="854" selectionTopPixel="0"/>
-</editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="mucky.java" partName="mucky.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/AndroidProject/workspace/World/src/mucky.java" title="mucky.java" tooltip="World/src/mucky.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/World/src/mucky.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="914" selectionOffset="0" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="26" selectionOffset="22" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="images.java" partName="images.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/AndroidProject/workspace/World/src/images.java" title="images.java" tooltip="World/src/images.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="images.java" partName="images.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/AndroidProject/workspace/World/src/images.java" title="images.java" tooltip="World/src/images.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/World/src/images.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1148" selectionTopPixel="548"/>
+<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="966" selectionTopPixel="480"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="animation.java" partName="animation.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/AndroidProject/workspace/World/src/animation.java" title="animation.java" tooltip="World/src/animation.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/World/src/animation.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1042" selectionTopPixel="203"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="bucky.java" partName="bucky.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/AndroidProject/workspace/World/src/bucky.java" title="bucky.java" tooltip="World/src/bucky.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/World/src/bucky.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1268" selectionTopPixel="338"/>
 </editor>
 </editors>
 <views>
@@ -92,8 +97,9 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (3 items)"/>
+<category IMemento.internal.id="Warnings (8 items)"/>
 <category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -808,162 +814,160 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TestJavaGame/src/TestJavaGamePkg/clsSetUpGame.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TestJavaGame/src/TestJavaGamePkg/clsJavaGame.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/World/src/clsWorld.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/World/src/Screen.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/World/src/mucky.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/World/src/images.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/World/src/animation.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/World/src/mucky.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/World/src/bucky.java"/>
 </editors>
-<item historyLabel="clsJavaGame.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="images.java" index="0">
+<position info="not_deleted" x="501" y="0"/>
 </item>
-<item historyLabel="clsSetUpGame.java" index="0">
-<position info="not_deleted" x="1338" y="0"/>
+<item historyLabel="mucky.java" index="2">
+<position info="not_deleted" x="0" y="263"/>
 </item>
-<item historyLabel="clsJavaGame.java" index="1">
-<position info="not_deleted" x="625" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1588" y="0"/>
 </item>
-<item historyLabel="clsSetUpGame.java" index="0">
-<position info="not_deleted" x="1338" y="0"/>
+<item historyLabel="mucky.java" index="2">
+<position info="not_deleted" x="446" y="0"/>
 </item>
-<item historyLabel="clsSetUpGame.java" index="0">
-<position info="not_deleted" x="781" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="314" y="0"/>
 </item>
-<item historyLabel="clsSetUpGame.java" index="0">
-<position info="not_deleted" x="1575" y="0"/>
+<item historyLabel="mucky.java" index="2">
+<position info="not_deleted" x="22" y="26"/>
 </item>
-<item historyLabel="clsSetUpGame.java" index="0">
-<position info="not_deleted" x="1282" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="314" y="0"/>
 </item>
-<item historyLabel="clsJavaGame.java" index="1">
-<position info="not_deleted" x="625" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="517" y="0"/>
 </item>
-<item historyLabel="clsSetUpGame.java" index="0">
-<position info="not_deleted" x="1278" y="0"/>
+<item historyLabel="images.java" index="0">
+<position info="not_deleted" x="1295" y="53"/>
 </item>
-<item historyLabel="clsWorld.java" index="2">
-<position info="not_deleted" x="24" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="517" y="0"/>
 </item>
-<item historyLabel="clsWorld.java" index="2">
-<position info="not_deleted" x="24" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1588" y="0"/>
 </item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="1100" y="0"/>
+<item historyLabel="images.java" index="0">
+<position info="not_deleted" x="1295" y="53"/>
 </item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="284" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1588" y="0"/>
 </item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="423" y="0"/>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="192" y="0"/>
 </item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="459" y="0"/>
+<item historyLabel="images.java" index="0">
+<position info="not_deleted" x="1403" y="21"/>
 </item>
-<item historyLabel="Screen.java" index="3">
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1588" y="0"/>
+</item>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="751" y="0"/>
+</item>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="324" y="8"/>
+</item>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1580" y="0"/>
+</item>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="64" y="9"/>
+</item>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1588" y="0"/>
+</item>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="64" y="9"/>
+</item>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1588" y="0"/>
+</item>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="435" y="0"/>
+</item>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1588" y="0"/>
+</item>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="836" y="0"/>
+</item>
+<item historyLabel="bucky.java" index="3">
 <position/>
 </item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="743" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1578" y="0"/>
 </item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="892" y="0"/>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="435" y="0"/>
 </item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="848" y="0"/>
+<item historyLabel="images.java" index="0">
+<position info="not_deleted" x="966" y="8"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="914" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1578" y="0"/>
 </item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="0" y="74"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="887" y="0"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="914" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="962" y="0"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="119" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1018" y="0"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="211" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1437" y="0"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="237" y="0"/>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="688" y="0"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="367" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1437" y="0"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="476" y="0"/>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="650" y="0"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="644" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1437" y="0"/>
 </item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="1084" y="0"/>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="513" y="0"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="644" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1437" y="0"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="578" y="0"/>
+<item historyLabel="mucky.java" index="2">
+<position info="not_deleted" x="22" y="26"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="911" y="0"/>
+<item historyLabel="images.java" index="0">
+<position info="not_deleted" x="966" y="8"/>
 </item>
-<item historyLabel="mucky.java" index="4">
-<position info="not_deleted" x="0" y="914"/>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="513" y="0"/>
 </item>
-<item historyLabel="images.java" index="5">
-<position info="not_deleted" x="1952" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1437" y="0"/>
 </item>
-<item historyLabel="images.java" index="5">
-<position info="not_deleted" x="325" y="0"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1408" y="0"/>
 </item>
-<item historyLabel="images.java" index="5">
-<position/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1437" y="0"/>
 </item>
-<item historyLabel="clsWorld.java" index="2">
-<position info="not_deleted" x="10637" y="82"/>
+<item historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1569" y="0"/>
 </item>
-<item historyLabel="images.java" index="5">
-<position/>
+<item historyLabel="animation.java" index="1">
+<position info="not_deleted" x="1042" y="0"/>
 </item>
-<item historyLabel="images.java" index="5">
-<position info="not_deleted" x="899" y="0"/>
-</item>
-<item historyLabel="images.java" index="5">
-<position info="not_deleted" x="1941" y="0"/>
-</item>
-<item historyLabel="images.java" index="5">
-<position info="not_deleted" x="540" y="0"/>
-</item>
-<item historyLabel="clsWorld.java" index="2">
-<position info="not_deleted" x="277" y="28"/>
-</item>
-<item historyLabel="images.java" index="5">
-<position info="not_deleted" x="961" y="0"/>
-</item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="1084" y="0"/>
-</item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="696" y="0"/>
-</item>
-<item historyLabel="images.java" index="5">
-<position info="not_deleted" x="641" y="18"/>
-</item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="854" y="0"/>
-</item>
-<item historyLabel="images.java" index="5">
-<position info="not_deleted" x="1236" y="0"/>
-</item>
-<item historyLabel="Screen.java" index="3">
-<position info="not_deleted" x="854" y="0"/>
-</item>
-<item active="true" historyLabel="images.java" index="5">
-<position info="not_deleted" x="1236" y="0"/>
+<item active="true" historyLabel="bucky.java" index="3">
+<position info="not_deleted" x="1569" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -990,6 +994,12 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="bucky.java" tooltip="World/src/bucky.java">
+<persistable path="/World/src/bucky.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="animation.java" tooltip="World/src/animation.java">
+<persistable path="/World/src/animation.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="images.java" tooltip="World/src/images.java">
 <persistable path="/World/src/images.java"/>
 </file>
