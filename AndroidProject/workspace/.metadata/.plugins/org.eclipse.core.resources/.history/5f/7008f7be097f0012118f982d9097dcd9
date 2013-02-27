@@ -1,0 +1,97 @@
+import java.awt.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.*;
+
+public class MainSprite{
+	public static void main(String[] args){
+		MainSprite b = new MainSprite();
+		b.run();
+	}
+	private Sprite sprite;
+	private animation a;
+	private ScreenManager s;
+	private Image bg;
+	
+	public static final DisplayMode modes1[] = {
+		new DisplayMode(800,600,32,0),
+		new DisplayMode(800,600,24,0),
+		new DisplayMode(800,600,16,0),
+		new DisplayMode(640,480,32,0),
+		new DisplayMode(640,480,24,0),
+		new DisplayMode(640,480,16,0),
+	};
+	//Loads scene and sprites
+		public void loadImages(){
+//			System.out.println("loadImages() ");
+			bg = new ImageIcon("c:\\images\\800px-TWW_parallax_scrolling_sample_1.gif").getImage();
+			Image sprite1= new ImageIcon("c:\\images\\java1.png").getImage();
+			Image sprite2= new ImageIcon("c:\\images\\java2.png").getImage();
+			Image sprite3= new ImageIcon("c:\\images\\java3.png").getImage();
+			
+			a = new animation();
+			a.addScene(sprite1, 250);
+			a.addScene(sprite2, 250);
+			
+			sprite = new Sprite(a);
+			sprite.setVelocityX(0.3f);
+			sprite.setVelocityY(0.3f);
+		}   
+		public void run(){
+//			System.out.println("run() ");
+			s = new ScreenManager();
+			try{
+				DisplayMode dm = s.findFirstCompatibleMode(modes1);
+				s.setFullScreen(dm);
+				loadImages();
+				MovieLoop();
+			}finally{
+				s.restoreScreen();
+			}
+		}
+//Play the game
+		public void MovieLoop(){
+			long startingTime = System.currentTimeMillis();
+			long cumTime = startingTime;
+			
+			while (cumTime - startingTime <5000){
+				long timePassed = System.currentTimeMillis() - cumTime;
+				cumTime += timePassed;
+//				a.update(timePassed);
+				update(timePassed);
+//draw graphics
+				Graphics2D g = s.getGraphics();
+				draw(g);
+				g.dispose();
+				s.update();
+				
+				try {
+					Thread.sleep(20);
+				}catch(Exception ex){}
+			}
+		}
+//draw method
+		public void draw(Graphics2D g){
+//			System.out.println("draw ");
+			g.drawImage(bg, 0, 0, null);
+			g.drawImage(sprite.getImage(),Math.round(sprite.getX()),Math.round(sprite.getY()),null);
+//			g.drawImage(a.getImage(),0,0,null);
+		}
+//update sprite position
+		public void update(long timePassed){
+//			System.out.println("update ");
+			if (sprite.getX() < 0){
+				sprite.setVelocityX(Math.abs(sprite.getVelocityX()));
+			}else if (sprite.getX() + sprite.getWithdth() > s.getWitdth()){
+				sprite.setVelocityX(-Math.abs(sprite.getVelocityX()));
+			}
+			
+			if (sprite.getY() < 0){
+				sprite.setVelocityY(Math.abs(sprite.getVelocityY()));
+			}else if (sprite.getY() + sprite.getHeight() > s.getHeight()){
+				sprite.setVelocityY(-Math.abs(sprite.getVelocityY()));
+			}
+		
+			sprite.update(timePassed);
+		}
+}

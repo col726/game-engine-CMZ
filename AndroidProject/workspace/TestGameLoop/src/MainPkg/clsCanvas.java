@@ -1,0 +1,128 @@
+package MainPkg;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+
+import org.jbox2d.collision.shapes.PolygonShape;
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.Body;
+import org.jbox2d.dynamics.BodyDef;
+import org.jbox2d.dynamics.BodyType;
+import org.jbox2d.dynamics.FixtureDef;
+import org.jbox2d.testbed.framework.TestbedTest;
+
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.imageio.ImageIO;
+
+
+import java.io.File;
+import java.io.IOException;
+
+
+class clsCanvas extends JPanel implements MouseListener
+{
+    //Image img;      // Contains the image to draw on MyCanvas
+    private BufferedImage img;
+
+    public void MyCanvas() throws IOException
+    {
+    	System.out.println("Class - clsCanvas");
+        JOptionPane.showMessageDialog(null, "Class - clsCanvas - MyCanvas()");
+        // Initialize img here.
+        try { 
+        	img = ImageIO.read(new File("D:\\MyStuff\\Drexel\\CS680\\Images\\knightWhite.png"));
+        	SetupPanel();
+        } catch (IOException ex) {
+        	System.out.println("Houston We Have A Problem");
+            JOptionPane.showMessageDialog(null, "Houston We Have A Problem");
+       }
+
+        this.addMouseListener(this);
+    }
+    
+    public void SetupPanel()
+    {
+    	System.out.println("SetupPanel()");
+        JOptionPane.showMessageDialog(null, "SetupPanel()");
+        int x = 0;
+        int y = 0;
+
+        Graphics g = img.getGraphics();
+        g.fillOval(x, y, 3, 3);
+        paintComponent(g);
+        g.dispose();
+    }
+
+    public void paintComponent(Graphics2D g)
+    {
+    	System.out.println("paintComponent(Graphics g)");
+        JOptionPane.showMessageDialog(null, "paintComponent(Graphics g)");
+        // Draws the image to the canvas
+        g.drawImage(img, 0, 0, null);
+    }
+
+    public void mouseClicked(MouseEvent e)
+    {
+    	System.out.println("mouseClicked");
+        JOptionPane.showMessageDialog(null, "mouseClicked");
+        int x = e.getX();
+        int y = e.getY();
+
+        Graphics g = img.getGraphics();
+        g.fillOval(x, y, 3, 3);
+        g.dispose();
+    }
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+    	System.out.println("mouseClicked");
+        JOptionPane.showMessageDialog(null, "mouseClicked");	
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+    	System.out.println("mouseClicked");
+        JOptionPane.showMessageDialog(null, "mouseClicked");
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+    	System.out.println("mouseClicked");
+        JOptionPane.showMessageDialog(null, "mouseClicked");
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+    	System.out.println("mouseClicked");
+        JOptionPane.showMessageDialog(null, "mouseClicked");
+	}
+
+    // ... other MouseListener methods ... //
+}
+	
+/*
+public void paintComponent(Graphics g) {
+	super.paintComponent(g);
+	System.out.println("Method - paintComponent");
+    JOptionPane.showMessageDialog(null, "Method - paintComponent");
+    g.drawImage(bg, 0, 0, null);
+
+    //dbImage = createImage(getWidth(), getHeight());
+    //dbg = dbImage.getGraphics();
+    //paintComponent(dbg);
+    g.drawImage(dbImage, x, y, this);
+    g.setColor(Color.WHITE);
+    g.drawImage(ghost, x, y, this);
+
+    //repaint();
+}  //end method
+*/

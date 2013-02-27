@@ -1,0 +1,64 @@
+import java.awt.Image;
+
+public class Sprite{
+
+	private animation a;
+	private float x;
+	private float y; 
+	private float vx;
+	private float vy;
+	
+	public Sprite(animation a){
+		this.a = a;
+	}
+//change position
+	public void update(long timePassed){
+		x = vx * timePassed;
+		y = vy * timePassed;
+		a.update(timePassed);
+	}
+//get x position
+	public float getX(){
+		return x;
+	}
+//get y position
+	public float getY(){
+		return y;
+	}
+//get x position
+	public void setX(float x){
+		this.x = x;
+	}
+//get x position
+	public void setY(float y){
+		this.y = y;
+	}
+//get width
+	public int getWithdth(){
+		return a.getImage().getWidth(null);
+	}
+//get Height
+	public int getHeight(){
+		return a.getImage().getHeight(null);
+	}
+//get horzional velocity
+	public float getVelocityX(){
+		return vx;
+	}
+//get vertical velocity
+	public float getVelocityY(){
+		return vy;
+	}
+//set horzional velocity
+	public void setVelocityX(float vx){
+		this.vx = vx;
+	}
+//set vertical velocity
+	public void setVelocityY(float vy){
+		this.vx = vy;
+	}
+// get image of sprite/image
+	public Image getImage(){
+		return a.getImage();
+	}
+}

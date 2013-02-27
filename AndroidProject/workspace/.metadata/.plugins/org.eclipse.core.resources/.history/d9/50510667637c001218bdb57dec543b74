@@ -1,0 +1,60 @@
+
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class Example extends JFrame {
+
+    public Example() {
+        initUI();
+    }
+
+    public final void initUI() {
+
+        JPanel panel = new JPanel();
+        getContentPane().add(panel);
+        panel.
+        panel.setLayout(null);
+        panel.setToolTipText("A Panel container");
+
+        JButton button = new JButton("Start Game");
+        button.setBounds(100, 60, 100, 30);
+        button.setToolTipText("A button component");
+
+        panel.add(button);
+
+        setTitle("Test Game");
+        setSize(300, 200);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+public static void main(String args[]) {
+/*
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                Example ex = new Example();
+                ex.setVisible(true);
+                */
+    ImagePanel panel = new ImagePanel(new ImageIcon("images/bg.png").getImage());
+
+    JFrame frame = new JFrame();
+    frame.getContentPane().add(panel);
+    frame.pack();
+    frame.setVisible(true);
+
+            }
+        });
+    }
+}
+

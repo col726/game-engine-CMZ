@@ -1,0 +1,35 @@
+import java.awt.*;
+
+import javax.swing.*;
+
+public abstract class core() {
+	
+	private static final DisplayMode modes[] = {
+		new DisplayMode(800,600,32,0),
+		new DisplayMode(800,600,24,0),
+		new DisplayMode(800,600,16,0),
+		new DisplayMode(640,480,32,0),
+		new DisplayMode(640,480,24,0),
+		new DisplayMode(640,480,16,0),
+	};
+	
+	private boolean running;
+	protected ScreenManager s;
+	
+	public void stop(){
+		running = false;
+	}
+	
+	public void run(){
+		try{
+			init();
+			gameLoop();
+		}finally{
+			s.restoreScreen();
+		}
+	}
+	public void init(){
+		s = new ScreenManager();
+		DisplayMode = n
+	}
+}

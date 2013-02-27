@@ -1,0 +1,85 @@
+package TestJavaGamePkg;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URL;
+import javax.swing.*;
+//import javax.swing.JFrame;
+//import javax.swing.JOptionPane;
+//import javax.swing.JPanel;
+//import javax.swing.Timer;
+
+public class clsSetUpGame extends JPanel {
+    int x, y;
+    private Image dbImage;
+    private Graphics dbg;
+    Image ghost;
+    Image bg;
+
+
+public void SetupGame() throws Exception {
+	System.out.println("Class - clsJavaGame");
+//    JOptionPane.showMessageDialog(null, "SetupGame()");
+
+
+    // Load images
+    //ImageIcon i = new ImageIcon(
+        //  "C:/Users/Taylor/workspace/Java game/src/ghost.png");
+
+    JFrame f = new JFrame("Java Game");
+	f.setSize(1275, 725);
+	f.setResizable(false);
+	f.setVisible(true);
+	f.setBackground(Color.GRAY);
+	f.setContentPane(new JFrame());
+	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	setFocusable(true);
+
+	ImageIcon j = new ImageIcon("C:\\Users\\Mike\\Documents\\GitHub\\game-engine-CMZ\\AndroidProject\\workspace\\TestJavaGame\\images\\bg");
+	bg = j.getImage();
+	ImageIcon i = new ImageIcon("C:\\Users\\Mike\\Documents\\GitHub\\game-engine-CMZ\\AndroidProject\\workspace\\TestJavaGame\\images\\knightWhite");
+	ghost = i.getImage(); 
+   
+}
+/*
+public void paintComponent(Graphics g) {
+	super.paintComponent(g);
+	System.out.println("Method - paintComponent");
+    JOptionPane.showMessageDialog(null, "Method - paintComponent");
+    g.drawImage(bg, 0, 0, null);
+
+    //dbImage = createImage(getWidth(), getHeight());
+    //dbg = dbImage.getGraphics();
+    //paintComponent(dbg);
+    g.drawImage(dbImage, x, y, this);
+    g.setColor(Color.WHITE);
+    g.drawImage(ghost, x, y, this);
+
+    //repaint();
+}  //end method
+*/
+public void paint(Graphics g){
+	System.out.println("paint(Graphics g)");
+//    JOptionPane.showMessageDialog(null, "SetupGame()");
+    g.drawImage(bg, 0, 0, null);
+    x=1275;
+    y=725;
+    dbImage = createImage(getWidth(), getHeight());
+    dbg = dbImage.getGraphics();
+    paintComponent(dbg);
+    g.drawImage(dbImage, x, y, this);
+}
+
+public void paintComponent(Graphics g){
+	System.out.println("paintComponent(Graphics g)");
+    g.setColor(Color.WHITE);
+    g.drawImage(ghost, x, y, this);
+    repaint();
+}
+
+} //end class

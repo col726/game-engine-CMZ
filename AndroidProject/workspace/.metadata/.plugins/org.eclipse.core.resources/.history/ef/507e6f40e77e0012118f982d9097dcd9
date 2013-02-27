@@ -1,0 +1,31 @@
+import java.awt.*;
+
+import javax.swing.ImageIcon;
+
+public class amucky{
+	public static void main(String[] args){
+		amucky b = new amucky();
+		b.run();
+	}
+	private animation a;
+	private ScreenManager s;
+	private Image bg;
+	
+	public static final DisplayMode modes1[] = {
+		new DisplayMode(800,600,32,0),
+		new DisplayMode(800,600,24,0),
+		new DisplayMode(800,600,16,0),
+		new DisplayMode(640,480,32,0),
+		new DisplayMode(640,480,24,0),
+		new DisplayMode(640,480,16,0),
+	};
+	//Loads scene and sprites
+		public void loadImages(){
+			bg = new ImageIcon("c:\\images\\800px-TWW_parallax_scrolling_sample_1.gif").getImage();
+			Image sprite1= new ImageIcon("c:\\images\\java1.png").getImage();
+			Image sprite2= new ImageIcon("c:\\images\\java2.png").getImage();
+			a = new animation();
+			a.addScene(sprite1, 250);
+			a.addScene(sprite2, 250);
+		}
+}

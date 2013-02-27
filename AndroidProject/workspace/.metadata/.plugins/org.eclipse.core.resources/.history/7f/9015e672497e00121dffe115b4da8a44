@@ -1,0 +1,42 @@
+import java.awt.*;
+import java.util.ArrayList;
+
+public class animation{
+	private ArrayList scenes;
+	private int sceneIndex;
+	private long movieTime;
+	private long totalTime;
+	
+	private animation(){
+		scenes = new ArrayList();
+		totalTime = 0;
+		start();
+	}
+
+//add scene to arraylist
+	private synchronized void addScene(Image i, long t){
+		totalTime += t;
+		scenes.add(new OneScene(i, totalTime));
+	}
+//Start animation
+	private synchronized void start(){
+		movieTime = 0;
+		sceneIndex = 0;
+	}
+//Change animation
+	private synchronized void update(long timePassed){
+        if (scenes.size()>1){
+	       movieTime += timePassed;
+	       if (movieTime >= totalTime){
+		       movieTime = 0;
+		       sceneIndex = 0;
+	       }
+	       while (movieTime > getScene(sceneIndex).endTime){
+	    	   sceneIndex++;
+	    	   
+	       }
+        }
+	}	
+	
+	
+}

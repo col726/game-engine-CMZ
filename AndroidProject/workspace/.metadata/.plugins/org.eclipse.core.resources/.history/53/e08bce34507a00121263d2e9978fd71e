@@ -1,0 +1,60 @@
+package MainPkg;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JPanel;
+
+class clsMyCanvas extends JPanel implements MouseListener
+{
+    Image img;      // Contains the image to draw on MyCanvas
+
+    public void MyCanvas()
+    {
+        // Initialize img here.
+        this.addMouseListener(this);
+    }
+
+    public void paintComponent(Graphics g)
+    {
+        // Draws the image to the canvas
+        g.drawImage(img, 0, 0, null);
+    }
+
+    public void mouseClicked(MouseEvent e)
+    {
+        int x = e.getX();
+        int y = e.getY();
+
+        Graphics g = img.getGraphics();
+        g.fillOval(x, y, 3, 3);
+        g.dispose();
+    }
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+    // ... other MouseListener methods ... //
+}}

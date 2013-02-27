@@ -1,0 +1,15 @@
+package MainPkg;
+import javax.swing.JOptionPane;
+public class MainGameLoop {
+	  public static void main(String[] args) {
+		    System.out.println("MainGameLoop - Main Function");
+		    JOptionPane.showMessageDialog(null, "Class -  MainGameLoop -- function - main()");
+		    clsMyCanvas MyCanvas = new clsMyCanvas();
+		    MyCanvas.MyCanvas();
+		    clsInitialization initmethod = new clsInitialization();
+		    initmethod.InitializeObjects();
+     	    clsGameLoop maingameloop = new clsGameLoop();
+     	    maingameloop.MainGameLoop();
+	  }
+
+}
