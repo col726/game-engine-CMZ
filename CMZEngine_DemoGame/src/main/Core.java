@@ -1,9 +1,12 @@
 package main;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 
-public abstract class Core {
+public abstract class Core implements KeyListener {
 	private static DisplayMode modes[] = {
 		new DisplayMode(800, 600, 32, 0), 
 		new DisplayMode(800, 600, 24, 0), 
@@ -41,6 +44,7 @@ public abstract class Core {
 		w.setBackground(Color.GREEN);
 		w.setForeground(Color.WHITE);
 		running = true;
+		//w.addKeyListener(this);
 	}
 	
 	public void gameLoop() {
@@ -70,4 +74,29 @@ public abstract class Core {
 	}
 	
 	public abstract void draw(Graphics2D g);
+	
+	protected String mess = "";
+
+	public void keyPressed(KeyEvent e) {
+		int keyCode = e.getKeyCode();
+		if(keyCode == KeyEvent.VK_ESCAPE)
+		{
+			stop();
+		}
+		else
+		{
+			mess = "Pressed : " + KeyEvent.getKeyText(keyCode);
+			e.consume();
+		}
+	}
+
+	public void keyReleased(KeyEvent e) {
+		int keyCode = e.getKeyCode();
+		mess = "Released : " + KeyEvent.getKeyText(keyCode);
+		e.consume();
+	}
+
+	public void keyTyped(KeyEvent e) {
+		e.consume();
+	}
 }

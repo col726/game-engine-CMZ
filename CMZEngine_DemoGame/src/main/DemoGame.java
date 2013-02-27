@@ -2,23 +2,30 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 //import javax.media.opengl.*;
 
-public class DemoGame {
-
+public class DemoGame extends Core {
+	private int time = 0;
+	private final int REDRAWING_PERIOD = 20;
+	private final int MAX_FRAME_SKIP = 10;
+	private boolean quit2 = false;
 	
-	private static int time = 0;
-	private static final int REDRAWING_PERIOD = 20;
-	private static final int MAX_FRAME_SKIP = 10;
-	private static boolean quit2 = false;
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+		new DemoGame().run();
+	}
+	
+	public void init() {
+		super.init();
+		Window w = s.getFullScreenWindow();
+		w.addKeyListener(this);
+	}
+	
+	public void gameLoop() {
 		CMZEngine DemoEngine = new CMZEngine();
 		
 		boolean timeForUpdatingAI = true;
@@ -51,24 +58,32 @@ public class DemoGame {
 		}
 
 	}
+	
+	public synchronized void draw(Graphics2D g) {
+		Window w = s.getFullScreenWindow();
+		g.setColor(w.getBackground());
+		g.fillRect(0, 0, s.getWidth(), s.getHeight());
+		g.setColor(w.getForeground());
+		g.drawString(mess, 40, 50);
+	}
 
-	private static void SDL_Delay(int i) {
+	private void SDL_Delay(int i) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private static int SDL_GetTicks() {
+	private int SDL_GetTicks() {
 		// TODO Auto-generated method stub
 		return 60;
 	}
 
-	private static boolean getInput() {
+	private boolean getInput() {
 		// TODO Auto-generated method stub
 		
 		return false;
 	}
 	
-	private static void FPSControl(CMZEngine game) {
+	private void FPSControl(CMZEngine game) {
 		int act_time = SDL_GetTicks();
 		int frames = 0;
 		boolean need_to_redraw = true;
@@ -95,13 +110,13 @@ public class DemoGame {
 		}
 	}
 
-	private static void updateStatistics() {
+	private void updateStatistics() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	//Note: pollForOSMessages returns true if the game loop should exit
-	private static boolean pollForOSMessages() {
+	private boolean pollForOSMessages() {
 		// TODO Auto-generated method stub
 		/*while ( event = SDL_PollEvent() ) {
 			switch ( event.type ) {

@@ -38,7 +38,7 @@ public class MouseInput extends Core implements KeyListener, MouseMotionListener
 	public void keyTyped(KeyEvent e) {
 		e.consume();
 	}
-	
+
 	public void init() {
 		super.init();
 		Window w = s.getFullScreenWindow();
