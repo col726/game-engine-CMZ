@@ -39,20 +39,25 @@ public class DemoGame extends Core {
 		
 		DemoEngine.Init();
 		
-		while(!quit)
+		while(running)
 		{
-			quit = pollForOSMessages();
-			I = getInput();
+			//quit = pollForOSMessages();
+			String gameAction = GameAction;
 			
-			DemoEngine.UpdateAI(I);
-			DemoEngine.addToTextBox("--AI Updated");
+			DemoEngine.UpdateAI(gameAction);
+			mess += "\n--AI Updated";
 			
-			DemoEngine.UpdatePhysics(I);
-			DemoEngine.addToTextBox("--Physics Updated");
+			DemoEngine.UpdatePhysics(gameAction);
+			mess += "\n--Physics Updated";
 			updateStatistics();
 
 			FPSControl(DemoEngine);
-			DemoEngine.addToTextBox("--Frames Update");
+			mess += "\n--Frames Update";
+			
+			Graphics2D g = s.getGraphics();
+			draw(g);
+			g.dispose();
+			s.update();
 			
 			SDL_Delay(1);
 		}
@@ -64,7 +69,7 @@ public class DemoGame extends Core {
 		g.setColor(w.getBackground());
 		g.fillRect(0, 0, s.getWidth(), s.getHeight());
 		g.setColor(w.getForeground());
-		g.drawString(mess, 40, 50);
+		drawString(g, mess, 40, 50);
 	}
 
 	private void SDL_Delay(int i) {

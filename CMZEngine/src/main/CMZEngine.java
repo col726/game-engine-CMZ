@@ -60,9 +60,9 @@ public class CMZEngine {
 	}
 
 
-	public void UpdatePhysics(Object physicsObject) {
+	public void UpdatePhysics(String gameAction) {
 		// TODO Auto-generated method stub
-		System.out.println("Updating Physics..." + physicsObject.toString());
+		System.out.println("Updating Physics..." + gameAction);
 		
 		//jBox trial
 		this.jBoxWorld.step(timeStep, velocityIterations, positionIterations);
@@ -81,15 +81,15 @@ public class CMZEngine {
 	}
 
 	
-	public void UpdateAI(Object aiObject) {
+	public void UpdateAI(String gameAction) {
 		// TODO Auto-generated method stub
-		System.out.println("Updating AI..." + aiObject.toString());
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
+		System.out.println("Updating AI..." + gameAction);
+		//try {
+		//	Thread.sleep(1500);
+		//} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//	e.printStackTrace();
+		//}
 		
 		
 	}
@@ -103,12 +103,12 @@ public class CMZEngine {
 	public void Init() {
 		// TODO Auto-generated method stub
 		//world = new GameObject();
-		JFrame.setDefaultLookAndFeelDecorated(true);
-		GameFrame.setTitle("My First Swing Application");
-		GameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    JLabel label = new JLabel("Welcome");
-	    TextBox.setText("Init Started...");
-	    GameFrame.add(TextBox);
+		//JFrame.setDefaultLookAndFeelDecorated(true);
+		//GameFrame.setTitle("My First Swing Application");
+		//GameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    //JLabel label = new JLabel("Welcome");
+	    //TextBox.setText("Init Started...");
+	    //GameFrame.add(TextBox);
 	    
 	    BodyDef groundBodyDef = new BodyDef();
 	    groundBodyDef.position.set(0.0f, -10.0f);
@@ -136,21 +136,21 @@ public class CMZEngine {
 	    body.createFixture(dynamicFixtureDef);
 	    
 	    
-	    int frameWidth = 500;
-	    int frameHeight = 500;
-	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	    GameFrame.setBounds((int) screenSize.getWidth() - frameWidth, 0, frameWidth, frameHeight);
-	    GameFrame.setVisible(true);
+	    //int frameWidth = 500;
+	    //int frameHeight = 500;
+	    //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    //GameFrame.setBounds((int) screenSize.getWidth() - frameWidth, 0, frameWidth, frameHeight);
+	    //GameFrame.setVisible(true);
 	}
 	
 	public void createObject(int x, int y, boolean isMovable)
 	{
-		GameObject g = new GameObject(x,y);
+		GameObject go = new GameObject(x,y);
 		if (isMovable)
-			g.setGameBody(this.jBoxWorld.createBody(dynamicBodyDef));
+			go.setGameBody(this.jBoxWorld.createBody(dynamicBodyDef));
 		else
-			g.setGameBody(this.jBoxWorld.createBody(staticBodyDef));
-		gameObjects.add(g);
+			go.setGameBody(this.jBoxWorld.createBody(staticBodyDef));
+		gameObjects.add(go);
 	}
 
 

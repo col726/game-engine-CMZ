@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 public abstract class Core implements KeyListener {
 	private static DisplayMode modes[] = {
+		new DisplayMode(1366, 768, 32, 0), 
 		new DisplayMode(800, 600, 32, 0), 
 		new DisplayMode(800, 600, 24, 0), 
 		new DisplayMode(800, 600, 16, 0), 
@@ -15,8 +16,9 @@ public abstract class Core implements KeyListener {
 		new DisplayMode(640, 480, 24, 0), 
 		new DisplayMode(640, 480, 16, 0)
 	};
-	private boolean running;
+	protected boolean running;
 	protected ScreenManager s;
+	protected String GameAction = "";
 	
 	public void stop() {
 		running = false;
@@ -40,7 +42,7 @@ public abstract class Core implements KeyListener {
 		s.setFullScreen(dm);
 		
 		Window w = s.getFullScreenWindow();
-		w.setFont(new Font("Arial", Font.PLAIN, 20));
+		w.setFont(new Font("Arial", Font.PLAIN, 14));
 		w.setBackground(Color.GREEN);
 		w.setForeground(Color.WHITE);
 		running = true;
@@ -86,6 +88,7 @@ public abstract class Core implements KeyListener {
 		else
 		{
 			mess = "Pressed : " + KeyEvent.getKeyText(keyCode);
+			GameAction = KeyEvent.getKeyText(keyCode);
 			e.consume();
 		}
 	}
@@ -93,10 +96,18 @@ public abstract class Core implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		mess = "Released : " + KeyEvent.getKeyText(keyCode);
+		GameAction = "";
 		e.consume();
 	}
 
 	public void keyTyped(KeyEvent e) {
 		e.consume();
 	}
+	
+	protected void drawString(Graphics g, String text, int x, int y) {
+        for (String line : text.split("\n"))
+        {
+            g.drawString(line, x, y += g.getFontMetrics().getHeight());
+        }
+    }
 }
