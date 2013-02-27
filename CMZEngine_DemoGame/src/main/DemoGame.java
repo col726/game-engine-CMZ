@@ -25,6 +25,8 @@ public class DemoGame extends Core {
 		w.addKeyListener(this);
 	}
 	
+	protected String enginemess = "";
+	
 	public void gameLoop() {
 		CMZEngine DemoEngine = new CMZEngine();
 		
@@ -54,6 +56,8 @@ public class DemoGame extends Core {
 			FPSControl(DemoEngine);
 			mess += "\n--Frames Update";
 			
+			enginemess = DemoEngine.getUnreadMessages();
+			
 			Graphics2D g = s.getGraphics();
 			draw(g);
 			g.dispose();
@@ -69,7 +73,10 @@ public class DemoGame extends Core {
 		g.setColor(w.getBackground());
 		g.fillRect(0, 0, s.getWidth(), s.getHeight());
 		g.setColor(w.getForeground());
-		drawString(g, mess, 40, 50);
+		drawString(g, "Press ESC to exit...", 10, 10);
+		
+		drawString(g, "Game Messages\n" + mess, 40, 50);
+		drawString(g, "Engine Messages\n" + enginemess, 300, 50);
 	}
 
 	private void SDL_Delay(int i) {

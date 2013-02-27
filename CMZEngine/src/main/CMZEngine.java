@@ -42,6 +42,8 @@ public class CMZEngine {
     private BodyDef dynamicBodyDef;
     private BodyDef staticBodyDef;
     
+    private String engine_log = "";
+    
 	public CMZEngine()
 	{
 		gameCamera = new Camera();
@@ -50,6 +52,7 @@ public class CMZEngine {
 		jBoxWorld = new World(gravity, doSleep);
 		
 		System.out.println("You Created a CMZ Engine!");
+		engine_log += "\nYou Created a CMZ Engine!";
 	}
 
 
@@ -57,12 +60,14 @@ public class CMZEngine {
 	public void Render() {
 		// TODO Auto-generated method stub
 		System.out.println("Rendering..." + gameObjects.toString());
+		engine_log += "\nRendering..." + gameObjects.toString();
 	}
 
 
 	public void UpdatePhysics(String gameAction) {
 		// TODO Auto-generated method stub
 		System.out.println("Updating Physics..." + gameAction);
+		engine_log += "\nUpdating Physics..." + gameAction;
 		
 		//jBox trial
 		this.jBoxWorld.step(timeStep, velocityIterations, positionIterations);
@@ -70,6 +75,7 @@ public class CMZEngine {
 		Vec2 testVec = body.getPosition();
 		float angle = body.getAngle();
 		System.out.println("Box X Position: " + testVec.x + " Box Y Position: " + testVec.y + " BoxAngle: " + angle);
+		engine_log += "\nBox X Position: " + testVec.x + " Box Y Position: " + testVec.y + " BoxAngle: " + angle;
 		
 		/*try {
 			Thread.sleep(1500);
@@ -84,6 +90,7 @@ public class CMZEngine {
 	public void UpdateAI(String gameAction) {
 		// TODO Auto-generated method stub
 		System.out.println("Updating AI..." + gameAction);
+		engine_log += "\nUpdating AI..." + gameAction;
 		//try {
 		//	Thread.sleep(1500);
 		//} catch (InterruptedException e) {
@@ -151,6 +158,13 @@ public class CMZEngine {
 		else
 			go.setGameBody(this.jBoxWorld.createBody(staticBodyDef));
 		gameObjects.add(go);
+	}
+
+
+	public String getUnreadMessages() {
+		String messages = engine_log;
+		engine_log = "";
+		return messages;
 	}
 
 
