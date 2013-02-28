@@ -52,7 +52,7 @@ public class CMZEngine {
 	{
 		gameCamera = new Camera();
 		gameObjects = new ArrayList<GameObject>();
-		gravity = new Vec2(0.0f, -10.0f);
+		gravity = new Vec2(0.0f, 10.0f);
 		jBoxWorld = new World(gravity, doSleep);
 		
 		System.out.println("You Created a CMZ Engine!");
@@ -69,7 +69,7 @@ public class CMZEngine {
 		g.drawRect((int)body.getPosition().x, (int)body.getPosition().y, 50, 50);
 		
 		g.setColor(Color.CYAN);
-		g.fillRect((int)groundBody.getPosition().x, (int)groundBody.getPosition().y, 75, 75);
+		g.drawLine((int)groundBody.getPosition().x - 40, (int)groundBody.getPosition().y, (int)groundBody.getPosition().x + 800, (int)groundBody.getPosition().y);
 	}
 
 
@@ -78,23 +78,23 @@ public class CMZEngine {
 		System.out.println("Updating Physics..." + gameAction);
 		engine_log += "\nUpdating Physics..." + gameAction;
 		
-		body.setTransform(new Vec2((body.getPosition().x + 1), (body.getPosition().y + 1)), 0.0f);
+		//body.setTransform(new Vec2((body.getPosition().x + 1), (body.getPosition().y + 1)), 0.0f);
 		
 		if(gameAction == "Right")
 		{
-			groundBody.setTransform(new Vec2((groundBody.getPosition().x + 2), (groundBody.getPosition().y)), 0.0f);
+			body.setTransform(new Vec2((body.getPosition().x + 2), (body.getPosition().y)), 0.0f);
 		}
 		if(gameAction == "Left")
 		{
-			groundBody.setTransform(new Vec2((groundBody.getPosition().x - 2), (groundBody.getPosition().y)), 0.0f);
+			body.setTransform(new Vec2((body.getPosition().x - 2), (body.getPosition().y)), 0.0f);
 		}
 		if(gameAction == "Up")
 		{
-			groundBody.setTransform(new Vec2((groundBody.getPosition().x), (groundBody.getPosition().y - 2)), 0.0f);
+			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y - 2)), 0.0f);
 		}
 		if(gameAction == "Down")
 		{
-			groundBody.setTransform(new Vec2((groundBody.getPosition().x), (groundBody.getPosition().y + 2)), 0.0f);
+			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y + 2)), 0.0f);
 		}
 		
 		//jBox trial
@@ -146,11 +146,14 @@ public class CMZEngine {
 	    //GameFrame.add(TextBox);
 	    
 	    BodyDef groundBodyDef = new BodyDef();
-	    groundBodyDef.position.set(0.0f, -10.0f);
+	    //groundBodyDef.type = BodyType.DYNAMIC;
+	    groundBodyDef.position.set(0.0f, 700.0f);
 	    groundBody = this.jBoxWorld.createBody(groundBodyDef);
 	    
 	    PolygonShape groundBox = new PolygonShape();
-	    groundBox.setAsBox(50.0f, 10.0f);
+	    groundBox.setAsEdge(new Vec2(-40.0f,0.0f), new Vec2(800.0f,0.0f));
+	    
+	    
 	    
 	    groundBody.createFixture(groundBox, 0.0f);
 	    
@@ -161,7 +164,7 @@ public class CMZEngine {
 	    body = this.jBoxWorld.createBody(dynamicBodyDef);
 	    
 	    PolygonShape dynamicShape = new PolygonShape();
-	    dynamicShape.setAsBox(1.0f, 1.0f);
+	    dynamicShape.setAsBox(50.0f, 50.0f);
 	    
 	    FixtureDef dynamicFixtureDef = new FixtureDef();
 	    dynamicFixtureDef.shape = dynamicShape;
