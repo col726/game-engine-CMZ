@@ -1,18 +1,19 @@
 package main;
 
-import java.awt.*;
-import java.awt.event.*;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import javax.media.opengl.*;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.Window;
+
+import javax.swing.ImageIcon;
 
 public class DemoGame extends Core {
 	private int time = 0;
 	private final int REDRAWING_PERIOD = 20;
 	private final int MAX_FRAME_SKIP = 10;
-	private boolean quit2 = false;
-	
 	public CMZEngine DemoEngine;
+	
+	public Toolkit toolkit;
 	
 	/**
 	 * @param args
@@ -26,6 +27,7 @@ public class DemoGame extends Core {
 		Window w = s.getFullScreenWindow();
 		w.addKeyListener(this);
 		DemoEngine = new CMZEngine();
+		toolkit = Toolkit.getDefaultToolkit();
 	}
 	
 	protected String enginemess = "";
@@ -35,15 +37,19 @@ public class DemoGame extends Core {
 		boolean timeForUpdatingPhysics = true;
 		boolean timeForRendering = true;
 		
-		boolean quit = false;
-		
 		Goal demoGoal = new Goal(800, 200);	
 		
 		DemoEngine.addGoal(demoGoal);
 		
-		Object I;
-		
 		DemoEngine.Init();
+		
+		//Image i = new ImageIcon("/PROJECT_LOC/res/images/sprite0.png").getImage();
+		//DemoEngine.createObject(0, 8, 75, 75, i, true);
+		
+		Image i = new ImageIcon("C:\\Users\\Colin\\Desktop\\GESprite\\sprite0.png").getImage();
+		//DemoEngine.createObject(0, 8, 34, 56, "/PROJECT_LOC/res/images/sprite0.png", true);
+		DemoEngine.createObject(250, 250, 34, 56, i, true);
+		
 		
 		while(running)
 		{

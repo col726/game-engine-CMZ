@@ -25,6 +25,7 @@ public class GameObject {
 	float height;
 	private BodyDef bodyDef; 
 	private Body gameBody;
+	private Image i;
 	private animation a;
 	private PolygonShape bb;
 	
@@ -49,8 +50,28 @@ public class GameObject {
 		bb = new PolygonShape();
 		bb.setAsBox(width, height);
 		
+		a = new animation();
+		i = new ImageIcon(img).getImage();
+		a.addScene(i, 250);
+	}
+	
+	public GameObject(Vec2 p, int w, int h, Image i, boolean canMove)
+	{
+		this.position = p;
 		
-		Image i = new ImageIcon(img).getImage();
+		this.width = (float)w;
+		this.height = (float)h;
+		
+		bodyDef = new BodyDef();
+		if (canMove)
+			bodyDef.type = BodyType.DYNAMIC;
+		bodyDef.position.set(p);
+		
+		bb = new PolygonShape();
+		bb.setAsBox(width, height);
+		
+		a = new animation();
+		this.i = i;
 		a.addScene(i, 250);
 	}
 	
@@ -82,6 +103,20 @@ public class GameObject {
 	
 	public BodyDef getBodyDef() {
 		return this.bodyDef;
+	}
+	
+	public Image getImage() {
+		return this.i;
+	}
+
+	public int getWidth() {
+		// TODO Auto-generated method stub
+		return (int)this.width;
+	}
+
+	public int getHeight() {
+		// TODO Auto-generated method stub
+		return (int)this.height;
 	}
 
 	

@@ -3,6 +3,7 @@ package main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.MediaTracker;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +71,8 @@ public class CMZEngine {
 		
 		for(int i = 0; i < gameObjects.size(); i++)
 		{
-			gameObjects.get(i).getPosition();
+			GameObject temp = gameObjects.get(i);
+			g.drawImage(temp.getImage(), (int)temp.getPosition().x, (int)temp.getPosition().y, temp.getWidth(), temp.getHeight(), null);
 		}
 		
 		g.setColor(Color.BLUE);
@@ -190,13 +192,21 @@ public class CMZEngine {
 	    //GameFrame.setVisible(true);
 	}
 	
-	public void createObject(int x, int y, boolean isMovable)
+	public void createObject(int x, int y, int w, int h, String img, boolean isMovable)
 	{
-		GameObject go = new GameObject(x,y);
-		if (isMovable)
-			go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
-		else
-			go.setGameBody(this.jBoxWorld.createBody(staticBodyDef));
+		GameObject go = new GameObject(new Vec2(x,y), w, h, img, isMovable);
+		
+		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
+		
+		gameObjects.add(go);
+	}
+	
+	public void createObject(int x, int y, int w, int h, Image i, boolean isMovable)
+	{
+		GameObject go = new GameObject(new Vec2(x,y), w, h, i, isMovable);
+		
+		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
+		
 		gameObjects.add(go);
 	}
 	

@@ -1,6 +1,7 @@
 package main;
 
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
