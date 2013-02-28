@@ -46,6 +46,8 @@ public class CMZEngine {
     
     private String engine_log = "";
     
+    private Goal GameGoal;
+    
 	public CMZEngine()
 	{
 		gameCamera = new Camera();
@@ -60,6 +62,7 @@ public class CMZEngine {
 
 	//Only render objects within camera viewpoint
 	public void Render(Graphics2D g) {
+		GameGoal.showGoal(g);
 		
 		g.setColor(Color.BLUE);
 		//g.drawString("Engine Messages\n" + engine_log, 300, 50);
@@ -67,9 +70,6 @@ public class CMZEngine {
 		
 		g.setColor(Color.CYAN);
 		g.fillRect((int)groundBody.getPosition().x, (int)groundBody.getPosition().y, 75, 75);
-		// TODO Auto-generated method stub
-		//System.out.println("Rendering..." + gameObjects.toString());
-		//engine_log += "\nRendering..." + gameObjects.toString();
 	}
 
 
@@ -82,19 +82,19 @@ public class CMZEngine {
 		
 		if(gameAction == "Right")
 		{
-			groundBody.setTransform(new Vec2((groundBody.getPosition().x + 1), (groundBody.getPosition().y)), 0.0f);
+			groundBody.setTransform(new Vec2((groundBody.getPosition().x + 2), (groundBody.getPosition().y)), 0.0f);
 		}
 		if(gameAction == "Left")
 		{
-			groundBody.setTransform(new Vec2((groundBody.getPosition().x - 1), (groundBody.getPosition().y)), 0.0f);
+			groundBody.setTransform(new Vec2((groundBody.getPosition().x - 2), (groundBody.getPosition().y)), 0.0f);
 		}
 		if(gameAction == "Up")
 		{
-			groundBody.setTransform(new Vec2((groundBody.getPosition().x), (groundBody.getPosition().y - 1)), 0.0f);
+			groundBody.setTransform(new Vec2((groundBody.getPosition().x), (groundBody.getPosition().y - 2)), 0.0f);
 		}
 		if(gameAction == "Down")
 		{
-			groundBody.setTransform(new Vec2((groundBody.getPosition().x), (groundBody.getPosition().y + 1)), 0.0f);
+			groundBody.setTransform(new Vec2((groundBody.getPosition().x), (groundBody.getPosition().y + 2)), 0.0f);
 		}
 		
 		//jBox trial
@@ -186,6 +186,11 @@ public class CMZEngine {
 		else
 			go.setGameBody(this.jBoxWorld.createBody(staticBodyDef));
 		gameObjects.add(go);
+	}
+	
+	public void addGoal(Goal gameGoal)
+	{
+		GameGoal = gameGoal;
 	}
 
 

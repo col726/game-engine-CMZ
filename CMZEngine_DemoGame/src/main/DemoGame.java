@@ -36,6 +36,9 @@ public class DemoGame extends Core {
 		
 		boolean quit = false;
 		
+		Goal demoGoal = new Goal(800, 200);	
+		
+		DemoEngine.addGoal(demoGoal);
 		
 		Object I;
 		
