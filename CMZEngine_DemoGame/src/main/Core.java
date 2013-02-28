@@ -43,7 +43,7 @@ public abstract class Core implements KeyListener {
 		
 		Window w = s.getFullScreenWindow();
 		w.setFont(new Font("Arial", Font.PLAIN, 14));
-		w.setBackground(Color.GREEN);
+		w.setBackground(Color.BLACK);
 		w.setForeground(Color.WHITE);
 		running = true;
 		//w.addKeyListener(this);

@@ -64,6 +64,9 @@ public class CMZEngine {
 		g.setColor(Color.BLUE);
 		//g.drawString("Engine Messages\n" + engine_log, 300, 50);
 		g.drawRect((int)body.getPosition().x, (int)body.getPosition().y, 50, 50);
+		
+		g.setColor(Color.CYAN);
+		g.fillRect((int)groundBody.getPosition().x, (int)groundBody.getPosition().y, 75, 75);
 		// TODO Auto-generated method stub
 		//System.out.println("Rendering..." + gameObjects.toString());
 		//engine_log += "\nRendering..." + gameObjects.toString();
@@ -76,6 +79,23 @@ public class CMZEngine {
 		engine_log += "\nUpdating Physics..." + gameAction;
 		
 		body.setTransform(new Vec2((body.getPosition().x + 1), (body.getPosition().y + 1)), 0.0f);
+		
+		if(gameAction == "Right")
+		{
+			groundBody.setTransform(new Vec2((groundBody.getPosition().x + 1), (groundBody.getPosition().y)), 0.0f);
+		}
+		if(gameAction == "Left")
+		{
+			groundBody.setTransform(new Vec2((groundBody.getPosition().x - 1), (groundBody.getPosition().y)), 0.0f);
+		}
+		if(gameAction == "Up")
+		{
+			groundBody.setTransform(new Vec2((groundBody.getPosition().x), (groundBody.getPosition().y - 1)), 0.0f);
+		}
+		if(gameAction == "Down")
+		{
+			groundBody.setTransform(new Vec2((groundBody.getPosition().x), (groundBody.getPosition().y + 1)), 0.0f);
+		}
 		
 		//jBox trial
 		this.jBoxWorld.step(timeStep, velocityIterations, positionIterations);
