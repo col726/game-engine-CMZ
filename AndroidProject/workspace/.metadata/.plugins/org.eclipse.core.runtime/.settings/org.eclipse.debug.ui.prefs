@@ -1,6 +1,7 @@
-DEBUG.consoleOpenOnErr=false
 eclipse.preferences.version=1
 org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<launchPerspectives/>\r\n
-pref_state_memento.org.eclipse.debug.ui.DebugVieworg.eclipse.debug.ui.DebugView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<DebugViewMemento org.eclipse.debug.ui.BREADCRUMB_DROPDOWN_AUTO_EXPAND\="false"/>
+<<<<<<< HEAD
+=======
 preferredDetailPanes=DefaultDetailPane\:DefaultDetailPane|
+>>>>>>> b92d6ed331ca87f8a485021ea4fd6565a06564da
 preferredTargets=default\:default|

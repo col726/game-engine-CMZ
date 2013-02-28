@@ -33,5 +33,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/zaguanno/Desktop/HOME/Class/game-engine-CMZ/jbox2d-library/slf4j-api-1.7.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

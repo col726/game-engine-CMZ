@@ -2,21 +2,32 @@ package main;
 //http://www.google.com/#hl=en&sclient=psy-ab&q=sprite+animation+tutorial&oq=sprite+animation&gs_l=serp.1.1.0l4.0.0.1.2308.0.0.0.0.0.0.0.0..0.0.les%3B..0.0...1c..4.psy-ab.duXUlb1Ik3U&pbx=1&bav=on.2,or.r_gc.r_pw.r_qf.&fp=11cb6b782ebbe3ce&biw=1366&bih=622
 import java.awt.*;
 import java.awt.event.*;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 //import javax.media.opengl.*;
 
-public class DemoGame {
-
-	
-	private static int time = 0;
-	private static final int REDRAWING_PERIOD = 20;
-	private static final int MAX_FRAME_SKIP = 10;
+public class DemoGame extends Core {
+	private int time = 0;
+	private final int REDRAWING_PERIOD = 20;
+	private final int MAX_FRAME_SKIP = 10;
+	private boolean quit2 = false;
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+		new DemoGame().run();
+	}
+	
+	public void init() {
+		super.init();
+		Window w = s.getFullScreenWindow();
+		w.addKeyListener(this);
+	}
+	
+	protected String enginemess = "";
+	
+	public void gameLoop() {
 		CMZEngine DemoEngine = new CMZEngine();
 		
 		boolean timeForUpdatingAI = true;
@@ -30,43 +41,61 @@ public class DemoGame {
 		
 		DemoEngine.Init();
 		
-		while(!quit)
+		while(running)
 		{
-			quit = pollForOSMessages();
-			I = getInput();
+			//quit = pollForOSMessages();
+			String gameAction = GameAction;
 			
-			DemoEngine.UpdateAI(I);
-			DemoEngine.addToTextBox("--AI Updated");
+			DemoEngine.UpdateAI(gameAction);
+			mess += "\n--AI Updated";
 			
-			DemoEngine.UpdatePhysics(I);
-			DemoEngine.addToTextBox("--Physics Updated");
+			DemoEngine.UpdatePhysics(gameAction);
+			mess += "\n--Physics Updated";
 			updateStatistics();
 
 			FPSControl(DemoEngine);
-			DemoEngine.addToTextBox("--Frames Update");
+			mess += "\n--Frames Update";
+			
+			enginemess = DemoEngine.getUnreadMessages();
+			
+			Graphics2D g = s.getGraphics();
+			draw(g);
+			g.dispose();
+			s.update();
 			
 			SDL_Delay(1);
 		}
 
 	}
+	
+	public synchronized void draw(Graphics2D g) {
+		Window w = s.getFullScreenWindow();
+		g.setColor(w.getBackground());
+		g.fillRect(0, 0, s.getWidth(), s.getHeight());
+		g.setColor(w.getForeground());
+		drawString(g, "Press ESC to exit...", 10, 10);
+		
+		drawString(g, "Game Messages\n" + mess, 40, 50);
+		drawString(g, "Engine Messages\n" + enginemess, 300, 50);
+	}
 
-	private static void SDL_Delay(int i) {
+	private void SDL_Delay(int i) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private static int SDL_GetTicks() {
+	private int SDL_GetTicks() {
 		// TODO Auto-generated method stub
 		return 60;
 	}
 
-	private static boolean getInput() {
+	private boolean getInput() {
 		// TODO Auto-generated method stub
 		
 		return false;
 	}
 	
-	private static void FPSControl(CMZEngine game) {
+	private void FPSControl(CMZEngine game) {
 		int act_time = SDL_GetTicks();
 		int frames = 0;
 		boolean need_to_redraw = true;
@@ -93,13 +122,13 @@ public class DemoGame {
 		}
 	}
 
-	private static void updateStatistics() {
+	private void updateStatistics() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	//Note: pollForOSMessages returns true if the game loop should exit
-	private static boolean pollForOSMessages() {
+	private boolean pollForOSMessages() {
 		// TODO Auto-generated method stub
 		/*while ( event = SDL_PollEvent() ) {
 			switch ( event.type ) {
@@ -112,7 +141,7 @@ public class DemoGame {
 					game->MouseClick(event.button.x,event.button.y);
 					break;
 				case SDL_QUIT:
-					return true;
+					quit = true;
 			}
 		}*/
 		return false;
