@@ -12,6 +12,8 @@ public class DemoGame extends Core {
 	private final int MAX_FRAME_SKIP = 10;
 	private boolean quit2 = false;
 	
+	public CMZEngine DemoEngine;
+	
 	/**
 	 * @param args
 	 */
@@ -23,13 +25,12 @@ public class DemoGame extends Core {
 		super.init();
 		Window w = s.getFullScreenWindow();
 		w.addKeyListener(this);
+		DemoEngine = new CMZEngine();
 	}
 	
 	protected String enginemess = "";
 	
 	public void gameLoop() {
-		CMZEngine DemoEngine = new CMZEngine();
-		
 		boolean timeForUpdatingAI = true;
 		boolean timeForUpdatingPhysics = true;
 		boolean timeForRendering = true;

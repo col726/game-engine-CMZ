@@ -3,6 +3,7 @@ package main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.MediaTracker;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -48,6 +49,9 @@ public class CMZEngine {
     
     private Goal GameGoal;
     
+    private Toolkit toolkit;
+    private MediaTracker manager;
+    
 	public CMZEngine()
 	{
 		gameCamera = new Camera();
@@ -63,6 +67,11 @@ public class CMZEngine {
 	//Only render objects within camera viewpoint
 	public void Render(Graphics2D g) {
 		GameGoal.showGoal(g);
+		
+		for(int i = 0; i < gameObjects.size(); i++)
+		{
+			gameObjects.get(i).getPosition();
+		}
 		
 		g.setColor(Color.BLUE);
 		//g.drawString("Engine Messages\n" + engine_log, 300, 50);
@@ -185,7 +194,7 @@ public class CMZEngine {
 	{
 		GameObject go = new GameObject(x,y);
 		if (isMovable)
-			go.setGameBody(this.jBoxWorld.createBody(dynamicBodyDef));
+			go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
 		else
 			go.setGameBody(this.jBoxWorld.createBody(staticBodyDef));
 		gameObjects.add(go);
