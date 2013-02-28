@@ -46,6 +46,8 @@ public class CMZEngine {
     
     private String engine_log = "";
     
+    private Goal GameGoal;
+    
 	public CMZEngine()
 	{
 		gameCamera = new Camera();
@@ -60,18 +62,14 @@ public class CMZEngine {
 
 	//Only render objects within camera viewpoint
 	public void Render(Graphics2D g) {
+		GameGoal.showGoal(g);
 		
 		g.setColor(Color.BLUE);
 		//g.drawString("Engine Messages\n" + engine_log, 300, 50);
 		g.drawRect((int)body.getPosition().x, (int)body.getPosition().y, 50, 50);
 		
 		g.setColor(Color.CYAN);
-		
-		//g.fillRect((int)groundBody.getPosition().x, (int)groundBody.getPosition().y, 80, 25);
 		g.drawLine((int)groundBody.getPosition().x - 40, (int)groundBody.getPosition().y, (int)groundBody.getPosition().x + 800, (int)groundBody.getPosition().y);
-		// TODO Auto-generated method stub
-		//System.out.println("Rendering..." + gameObjects.toString());
-		//engine_log += "\nRendering..." + gameObjects.toString();
 	}
 
 
@@ -84,19 +82,19 @@ public class CMZEngine {
 		
 		if(gameAction == "Right")
 		{
-			body.setTransform(new Vec2((body.getPosition().x + 1), (body.getPosition().y)), 0.0f);
+			body.setTransform(new Vec2((body.getPosition().x + 2), (body.getPosition().y)), 0.0f);
 		}
 		if(gameAction == "Left")
 		{
-			body.setTransform(new Vec2((body.getPosition().x - 1), (body.getPosition().y)), 0.0f);
+			body.setTransform(new Vec2((body.getPosition().x - 2), (body.getPosition().y)), 0.0f);
 		}
 		if(gameAction == "Up")
 		{
-			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y - 1)), 0.0f);
+			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y - 2)), 0.0f);
 		}
 		if(gameAction == "Down")
 		{
-			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y + 1)), 0.0f);
+			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y + 2)), 0.0f);
 		}
 		
 		//jBox trial
@@ -191,6 +189,11 @@ public class CMZEngine {
 		else
 			go.setGameBody(this.jBoxWorld.createBody(staticBodyDef));
 		gameObjects.add(go);
+	}
+	
+	public void addGoal(Goal gameGoal)
+	{
+		GameGoal = gameGoal;
 	}
 
 
