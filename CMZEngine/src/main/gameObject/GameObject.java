@@ -11,6 +11,7 @@ import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.BodyType;
+import org.jbox2d.dynamics.FixtureDef;
 
 import main.GameVector;
 import main.Graphics.animation;
@@ -25,6 +26,7 @@ public class GameObject {
 	float height;
 	private BodyDef bodyDef; 
 	private Body gameBody;
+	private FixtureDef fixture;
 	private Image i;
 	private animation a;
 	private PolygonShape bb;
@@ -50,7 +52,14 @@ public class GameObject {
 		bb = new PolygonShape();
 		bb.setAsBox(width, height);
 		
-		a = new animation();
+		fixture = new FixtureDef();
+		fixture.shape = bb;
+	    fixture.density = 1.0f;
+	    fixture.friction = 0.3f;
+		
+	    
+	    
+	    a = new animation();
 		i = new ImageIcon(img).getImage();
 		a.addScene(i, 250);
 	}
@@ -69,6 +78,11 @@ public class GameObject {
 		
 		bb = new PolygonShape();
 		bb.setAsBox(width, height);
+		
+		fixture = new FixtureDef();
+		fixture.shape = bb;
+	    fixture.density = 1.0f;
+	    fixture.friction = 0.3f;
 		
 		a = new animation();
 		this.i = i;
@@ -98,7 +112,7 @@ public class GameObject {
 
 	public void setGameBody(Body gameBody) {
 		this.gameBody = gameBody;
-		gameBody.createFixture(bb, 0.0f);
+		gameBody.createFixture(fixture);
 	}
 	
 	public BodyDef getBodyDef() {
@@ -117,6 +131,11 @@ public class GameObject {
 	public int getHeight() {
 		// TODO Auto-generated method stub
 		return (int)this.height;
+	}
+	
+	public void updatePosition()
+	{
+		this.position = this.gameBody.getPosition();
 	}
 
 	

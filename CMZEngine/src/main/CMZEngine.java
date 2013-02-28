@@ -116,6 +116,11 @@ public class CMZEngine {
 		System.out.println("Box X Position: " + testVec.x + " Box Y Position: " + testVec.y + " BoxAngle: " + angle);
 		engine_log += "\nBox X Position: " + testVec.x + " Box Y Position: " + testVec.y + " BoxAngle: " + angle;
 		
+		for(int i = 0; i < gameObjects.size(); i++)
+		{
+			gameObjects.get(i).updatePosition();
+		}
+		
 		/*try {
 			Thread.sleep(1500);
 		} catch (InterruptedException e) {
