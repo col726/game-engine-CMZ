@@ -1,6 +1,8 @@
 package main;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -37,7 +39,7 @@ public class CMZEngine {
 	
 	private final float timeStep = 1.0f / 60.0f;
     private final int velocityIterations = 6;
-    private final int positionIterations = 2;
+    private final int positionIterations = 12;
     
     private BodyDef dynamicBodyDef;
     private BodyDef staticBodyDef;
@@ -57,10 +59,14 @@ public class CMZEngine {
 
 
 	//Only render objects within camera viewpoint
-	public void Render() {
+	public void Render(Graphics2D g) {
+		
+		g.setColor(Color.BLUE);
+		//g.drawString("Engine Messages\n" + engine_log, 300, 50);
+		g.drawRect((int)body.getPosition().x, (int)body.getPosition().y, 50, 50);
 		// TODO Auto-generated method stub
-		System.out.println("Rendering..." + gameObjects.toString());
-		engine_log += "\nRendering..." + gameObjects.toString();
+		//System.out.println("Rendering..." + gameObjects.toString());
+		//engine_log += "\nRendering..." + gameObjects.toString();
 	}
 
 
@@ -68,6 +74,8 @@ public class CMZEngine {
 		// TODO Auto-generated method stub
 		System.out.println("Updating Physics..." + gameAction);
 		engine_log += "\nUpdating Physics..." + gameAction;
+		
+		body.setTransform(new Vec2((body.getPosition().x + 1), (body.getPosition().y + 1)), 0.0f);
 		
 		//jBox trial
 		this.jBoxWorld.step(timeStep, velocityIterations, positionIterations);

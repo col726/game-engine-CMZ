@@ -56,10 +56,11 @@ public class DemoGame extends Core {
 			FPSControl(DemoEngine);
 			mess += "\n--Frames Update";
 			
-			enginemess = DemoEngine.getUnreadMessages();
+			//enginemess = DemoEngine.getUnreadMessages();
 			
 			Graphics2D g = s.getGraphics();
 			draw(g);
+			DemoEngine.Render(g);
 			g.dispose();
 			s.update();
 			
@@ -75,8 +76,8 @@ public class DemoGame extends Core {
 		g.setColor(w.getForeground());
 		drawString(g, "Press ESC to exit...", 10, 10);
 		
-		drawString(g, "Game Messages\n" + mess, 40, 50);
-		drawString(g, "Engine Messages\n" + enginemess, 300, 50);
+		//drawString(g, "Game Messages\n" + mess, 40, 50);
+		//drawString(g, "Engine Messages\n" + enginemess, 300, 50);
 	}
 
 	private void SDL_Delay(int i) {
@@ -117,7 +118,7 @@ public class DemoGame extends Core {
 		
 		if(need_to_redraw)
 		{
-			game.Render();
+			//game.Render();
 			need_to_redraw = false;
 		}
 	}
