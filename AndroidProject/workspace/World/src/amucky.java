@@ -1,0 +1,71 @@
+import java.awt.*;
+
+import javax.swing.ImageIcon;
+
+public class amucky{
+	public static void main(String[] args){
+		amucky b = new amucky();
+		b.run();
+	}
+	private animation a;
+	private ScreenManager s;
+	private Image bg;
+	
+	public static final DisplayMode modes1[] = {
+		new DisplayMode(800,600,32,0),
+		new DisplayMode(800,600,24,0),
+		new DisplayMode(800,600,16,0),
+		new DisplayMode(640,480,32,0),
+		new DisplayMode(640,480,24,0),
+		new DisplayMode(640,480,16,0),
+	};
+	//Loads scene and sprites
+		public void loadImages(){
+//			System.out.println("loadImages() ");
+			bg = new ImageIcon("c:\\images\\800px-TWW_parallax_scrolling_sample_1.gif").getImage();
+			Image sprite1= new ImageIcon("c:\\images\\java1.png").getImage();
+			Image sprite2= new ImageIcon("c:\\images\\java2.png").getImage();
+			
+			a = new animation();
+			a.addScene(sprite1, 250);
+			a.addScene(sprite2, 250);
+		}
+		public void run(){
+//			System.out.println("run() ");
+			s = new ScreenManager();
+			try{
+				DisplayMode dm = s.findFirstCompatibleMode(modes1);
+				s.setFullScreen(dm);
+				loadImages();
+				MovieLoop();
+			}finally{
+				s.restoreScreen();
+			}
+		}
+//Play the game
+		public void MovieLoop(){
+			long startingTime = System.currentTimeMillis();
+			long cumTime = startingTime;
+			
+			while (cumTime - startingTime <5000){
+				long timePassed = System.currentTimeMillis() - cumTime;
+				cumTime += timePassed;
+				a.update(timePassed);
+//draw graphics
+				Graphics2D g = s.getGraphics();
+				draw(g);
+				g.dispose();
+				s.update();
+				
+				try {
+					Thread.sleep(20);
+				}catch(Exception ex){}
+			}
+		}
+//draw method
+		public void draw(Graphics2D g){
+//			System.out.println("draw ");
+			g.drawImage(bg, 0, 0, null);
+			g.drawImage(a.getImage(),0,0,null);
+		}
+}

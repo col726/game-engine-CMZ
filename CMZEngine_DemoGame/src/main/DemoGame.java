@@ -1,16 +1,28 @@
 package main;
+<<<<<<< HEAD
 //http://www.google.com/#hl=en&sclient=psy-ab&q=sprite+animation+tutorial&oq=sprite+animation&gs_l=serp.1.1.0l4.0.0.1.2308.0.0.0.0.0.0.0.0..0.0.les%3B..0.0...1c..4.psy-ab.duXUlb1Ik3U&pbx=1&bav=on.2,or.r_gc.r_pw.r_qf.&fp=11cb6b782ebbe3ce&biw=1366&bih=622
 import java.awt.*;
 import java.awt.event.*;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 //import javax.media.opengl.*;
+=======
+
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.Window;
+
+import javax.swing.ImageIcon;
+>>>>>>> dce197fa73598ebfc3147fb391181108011347d9
 
 public class DemoGame extends Core {
 	private int time = 0;
 	private final int REDRAWING_PERIOD = 20;
 	private final int MAX_FRAME_SKIP = 10;
-	private boolean quit2 = false;
+	public CMZEngine DemoEngine;
+	
+	public Toolkit toolkit;
 	
 	/**
 	 * @param args
@@ -23,23 +35,30 @@ public class DemoGame extends Core {
 		super.init();
 		Window w = s.getFullScreenWindow();
 		w.addKeyListener(this);
+		DemoEngine = new CMZEngine();
+		toolkit = Toolkit.getDefaultToolkit();
 	}
 	
 	protected String enginemess = "";
 	
 	public void gameLoop() {
-		CMZEngine DemoEngine = new CMZEngine();
-		
 		boolean timeForUpdatingAI = true;
 		boolean timeForUpdatingPhysics = true;
 		boolean timeForRendering = true;
 		
-		boolean quit = false;
+		Goal demoGoal = new Goal(800, 200);	
 		
-		
-		Object I;
+		DemoEngine.addGoal(demoGoal);
 		
 		DemoEngine.Init();
+		
+		//Image i = new ImageIcon("/PROJECT_LOC/res/images/sprite0.png").getImage();
+		//DemoEngine.createObject(0, 8, 75, 75, i, true);
+		
+		Image i = new ImageIcon("res/images/sprite0.png").getImage();
+		//DemoEngine.createObject(0, 8, 34, 56, "/PROJECT_LOC/res/images/sprite0.png", true);
+		DemoEngine.createObject(250, 250, 34, 56, i, true);
+		
 		
 		while(running)
 		{
@@ -56,10 +75,11 @@ public class DemoGame extends Core {
 			FPSControl(DemoEngine);
 			mess += "\n--Frames Update";
 			
-			enginemess = DemoEngine.getUnreadMessages();
+			//enginemess = DemoEngine.getUnreadMessages();
 			
 			Graphics2D g = s.getGraphics();
 			draw(g);
+			DemoEngine.Render(g);
 			g.dispose();
 			s.update();
 			
@@ -75,8 +95,8 @@ public class DemoGame extends Core {
 		g.setColor(w.getForeground());
 		drawString(g, "Press ESC to exit...", 10, 10);
 		
-		drawString(g, "Game Messages\n" + mess, 40, 50);
-		drawString(g, "Engine Messages\n" + enginemess, 300, 50);
+		//drawString(g, "Game Messages\n" + mess, 40, 50);
+		//drawString(g, "Engine Messages\n" + enginemess, 300, 50);
 	}
 
 	private void SDL_Delay(int i) {
@@ -117,7 +137,7 @@ public class DemoGame extends Core {
 		
 		if(need_to_redraw)
 		{
-			game.Render();
+			//game.Render();
 			need_to_redraw = false;
 		}
 	}

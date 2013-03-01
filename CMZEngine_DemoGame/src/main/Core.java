@@ -1,10 +1,13 @@
 package main;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.DisplayMode;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import javax.swing.JFrame;
 
 public abstract class Core implements KeyListener {
 	private static DisplayMode modes[] = {
@@ -43,7 +46,7 @@ public abstract class Core implements KeyListener {
 		
 		Window w = s.getFullScreenWindow();
 		w.setFont(new Font("Arial", Font.PLAIN, 14));
-		w.setBackground(Color.GREEN);
+		w.setBackground(Color.BLACK);
 		w.setForeground(Color.WHITE);
 		running = true;
 		//w.addKeyListener(this);

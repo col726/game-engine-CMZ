@@ -1,0 +1,43 @@
+package TestJavaGamePkg;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+public class clsAL extends KeyAdapter {
+    int x, y;
+    Image ghost;
+    Image bg;
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+
+        if (keyCode == e.VK_LEFT) {
+            if (x <= 8)
+                x = 8;
+            else
+                x += -5;
+        }
+        if (keyCode == e.VK_RIGHT) {
+            if (x >= 235)
+                x = 235;
+            else
+                x += +5;
+        }
+        if (keyCode == e.VK_UP) {
+            if (y <= 18)
+                y = 18;
+            else
+                y += -5;
+        }
+        if (keyCode == e.VK_DOWN) {
+            if (y >= 235)
+                y = 235;
+            else
+                y += +5;
+        }
+    }
+
+public void keyReleased(KeyEvent e) {
+    }
+}  //End Class AL
