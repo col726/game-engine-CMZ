@@ -1,0 +1,23 @@
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
+import javax.swing.JFrame;
+
+
+
+Public class ScreenManager{
+	private GraphicsDevice vc;
+	
+//acess monitor
+	public ScreenManager(){
+		GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		vc = e.getDefaultScreenDevice();
+		
+	}
+	public DisplayMode[] getCompatibleDisplayModes(){
+		return vc.getDisplayModes();
+	}
+
+	
+}

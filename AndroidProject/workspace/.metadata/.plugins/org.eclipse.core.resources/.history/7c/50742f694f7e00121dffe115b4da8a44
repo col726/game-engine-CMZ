@@ -1,0 +1,25 @@
+import java.awt.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+public class bucky{
+	public static void main(String[] args){
+		DisplayMode displayMode = new DisplayMode(800,600, 16, DisplayMode.REFRESH_RATE_UNKNOWN);
+		bucky b = new bucky();
+		b.run(displayMode);
+	}
+	private Screen screen;
+	private Image bg;
+	private animation a;
+	
+	public void loadpics(){
+		bg = new ImageIcon("c:\\images\\800px-TWW_parallax_scrolling_sample_1.gif").getImage();
+		Image sprite1= new ImageIcon("c:\\images\\java1.png").getImage();
+		Image sprite2= new ImageIcon("c:\\images\\java2.png").getImage();
+		a = new animation();
+		a.addScene(sprite1, 250)
+		a.addScene(sprite1, 250);
+	}
+	
+}

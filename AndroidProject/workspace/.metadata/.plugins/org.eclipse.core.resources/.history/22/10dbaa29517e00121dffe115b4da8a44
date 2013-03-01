@@ -1,0 +1,51 @@
+import java.awt.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+public class bucky{
+	public static void main(String[] args){
+		DisplayMode displayMode = new DisplayMode(800,600, 16, DisplayMode.REFRESH_RATE_UNKNOWN);
+		bucky b = new bucky();
+		b.run(displayMode);
+	}
+	private Screen screen;
+	private Image bg;
+	private animation a;
+	
+//Loads scene and sprites
+	public void loadPics(){
+		bg = new ImageIcon("c:\\images\\800px-TWW_parallax_scrolling_sample_1.gif").getImage();
+		Image sprite1= new ImageIcon("c:\\images\\java1.png").getImage();
+		Image sprite2= new ImageIcon("c:\\images\\java2.png").getImage();
+		a = new animation();
+		a.addScene(sprite1, 250);
+		a.addScene(sprite2, 250);
+	}
+//Main Engine to run
+	public void run(DisplayMode dm){
+		screen = new Screen();
+		try{
+			screen.setFullScreen(dm, new JFrame());
+			loadPics();
+			movieLoop();
+		}finally{
+			screen.restoreScreen();
+		}
+	}
+//Main movie loop
+		public void movieLoop(){
+			long startingTime = System.currentTimeMillis();
+			long cumTime = startingTime;
+			
+			while (cumTime - startingTime <5000){
+				long timePassed = System.currentTimeMillis() - cumTime;
+				cumTime += timePassed;
+				a.update(timePassed);
+			}
+		}
+		
+		
+
+	
+}
