@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
+import java.io.File;
 
 import main.Graphics.Camera;
 import main.gameObject.GameObject;
@@ -129,6 +130,16 @@ public class CMZEngine {
 		}*/
 		
 	}
+	
+	public void UpdateSound()
+	{
+		for(int i = 0; i < gameObjects.size(); i++)
+		{
+			GameObject curr = gameObjects.get(i);
+			if(!curr.getDefaultSound().isPlaying)
+				curr.getDefaultSound().play();
+		}
+	}
 
 	
 	public void UpdateAI(String gameAction) {
@@ -206,9 +217,9 @@ public class CMZEngine {
 		gameObjects.add(go);
 	}
 	
-	public void createObject(int x, int y, int w, int h, Image i, boolean isMovable)
+	public void createObject(int x, int y, int w, int h, Image i, boolean isMovable, File soundFile)
 	{
-		GameObject go = new GameObject(new Vec2(x,y), w, h, i, isMovable);
+		GameObject go = new GameObject(new Vec2(x,y), w, h, i, isMovable, soundFile);
 		
 		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
 		

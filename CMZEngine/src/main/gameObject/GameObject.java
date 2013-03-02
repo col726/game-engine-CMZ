@@ -3,6 +3,7 @@ package main.gameObject;
 
 
 import java.awt.Image;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 
@@ -64,7 +65,7 @@ public class GameObject {
 		a.addScene(i, 250);
 	}
 	
-	public GameObject(Vec2 p, int w, int h, Image i, boolean canMove)
+	public GameObject(Vec2 p, int w, int h, Image i, boolean canMove, File soundFile)
 	{
 		this.position = p;
 		
@@ -87,6 +88,13 @@ public class GameObject {
 		a = new animation();
 		this.i = i;
 		a.addScene(i, 250);
+		
+		try {
+			defaultSound = new GameSound(soundFile);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public GameObject()
@@ -136,6 +144,14 @@ public class GameObject {
 	public void updatePosition()
 	{
 		this.position = this.gameBody.getPosition();
+	}
+
+	public GameSound getDefaultSound() {
+		return defaultSound;
+	}
+
+	public void setDefaultSound(GameSound defaultSound) {
+		this.defaultSound = defaultSound;
 	}
 
 	
