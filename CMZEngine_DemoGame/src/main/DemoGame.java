@@ -1,20 +1,20 @@
 package main;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //http://www.google.com/#hl=en&sclient=psy-ab&q=sprite+animation+tutorial&oq=sprite+animation&gs_l=serp.1.1.0l4.0.0.1.2308.0.0.0.0.0.0.0.0..0.0.les%3B..0.0...1c..4.psy-ab.duXUlb1Ik3U&pbx=1&bav=on.2,or.r_gc.r_pw.r_qf.&fp=11cb6b782ebbe3ce&biw=1366&bih=622
 import java.awt.*;
 import java.awt.event.*;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 //import javax.media.opengl.*;
-=======
 
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Window;
+import java.io.File;
 
 import javax.swing.ImageIcon;
->>>>>>> dce197fa73598ebfc3147fb391181108011347d9
+//>>>>>>> dce197fa73598ebfc3147fb391181108011347d9
 
 public class DemoGame extends Core {
 	private int time = 0;
@@ -56,8 +56,9 @@ public class DemoGame extends Core {
 		//DemoEngine.createObject(0, 8, 75, 75, i, true);
 		
 		Image i = new ImageIcon("res/images/sprite0.png").getImage();
+		File sound = new File("res/sounds/retro.wav");
 		//DemoEngine.createObject(0, 8, 34, 56, "/PROJECT_LOC/res/images/sprite0.png", true);
-		DemoEngine.createObject(250, 250, 34, 56, i, true);
+		DemoEngine.createObject(250, 250, 34, 56, i, true, sound);
 		
 		
 		while(running)
@@ -71,7 +72,7 @@ public class DemoGame extends Core {
 			DemoEngine.UpdatePhysics(gameAction);
 			mess += "\n--Physics Updated";
 			updateStatistics();
-
+			DemoEngine.UpdateSound();
 			FPSControl(DemoEngine);
 			mess += "\n--Frames Update";
 			
