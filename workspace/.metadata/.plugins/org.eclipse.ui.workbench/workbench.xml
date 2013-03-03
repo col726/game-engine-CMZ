@@ -39,7 +39,7 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScreenManager.java" partName="ScreenManager.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/CMZEngine/src/main/ScreenManager.java" title="ScreenManager.java" tooltip="CMZEngine/src/main/ScreenManager.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScreenManager.java" partName="ScreenManager.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/CMZEngine/src/main/ScreenManager.java" title="ScreenManager.java" tooltip="CMZEngine/src/main/ScreenManager.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CMZEngine/src/main/ScreenManager.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="270" selectionTopPixel="0"/>
 </editor>
@@ -47,9 +47,9 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CMZEngine/src/main/GameVector.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CMZEngine.java" partName="CMZEngine.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/CMZEngine/src/main/CMZEngine.java" title="CMZEngine.java" tooltip="CMZEngine/src/main/CMZEngine.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CMZEngine.java" partName="CMZEngine.java" path="C:/Users/Mike/Documents/GitHub/game-engine-CMZ/CMZEngine/src/main/CMZEngine.java" title="CMZEngine.java" tooltip="CMZEngine/src/main/CMZEngine.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CMZEngine/src/main/CMZEngine.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="749" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="438" selectionTopPixel="23"/>
 </editor>
 </editors>
 <views>
@@ -76,7 +76,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="org.eclipse.ui.resourcePerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.ui.resourcePerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.help.internal.ui.HelpActionSet"/>
@@ -197,6 +197,7 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CMZEngine/src/main/ScreenManager.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CMZEngine/src/main/GameVector.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CMZEngine/src/main/CMZEngine.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CMZEngine/src/main/ScreenManager.java"/>
 </editors>
 <item historyLabel="Core.java" index="0">
 <position info="not_deleted" x="0" y="0"/>
@@ -219,8 +220,14 @@
 <item historyLabel="ScreenManager.java" index="4">
 <position info="not_deleted" x="270" y="0"/>
 </item>
-<item active="true" historyLabel="CMZEngine.java" index="6">
+<item historyLabel="CMZEngine.java" index="6">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="CMZEngine.java" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="ScreenManager.java" index="7">
+<position info="not_deleted" x="270" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
