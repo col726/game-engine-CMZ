@@ -223,11 +223,7 @@ public class CMZEngine {
 	    //GameFrame.setVisible(true);
 	}
 	
-<<<<<<< HEAD
-	public void createObject(int x, int y, int w, int h, String img, boolean isMovable)
-	{		
-		GameObject go = new GameObject(new Vec2(x,y), w, h, img, isMovable);
-=======
+	
 	public void addLevel(GameLevel level) {
 		try
 		{
@@ -237,13 +233,12 @@ public class CMZEngine {
 		{
 			System.out.println(e);
 		}
+		
 	}
-	
+
 	public void createObject(int x, int y, int w, int h, Image i, boolean isMovable)
 	{
 		GameObject go = new GameObject(new Vec2(x,y), w, h, i, isMovable);
->>>>>>> bf740d55eb34e255eeca2dd67a9cd1a0a85502ed
-		
 		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
 		
 		gameObjects.add(go);
