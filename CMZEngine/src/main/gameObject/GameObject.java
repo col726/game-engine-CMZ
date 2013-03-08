@@ -38,7 +38,7 @@ public class GameObject {
 		System.out.println("Created a game Object");
 	}
 	
-	public GameObject(Vec2 p, int w, int h, String img, boolean canMove)
+	public GameObject(Vec2 p, int w, int h, Image i, boolean canMove)
 	{
 		this.position = p;
 		
@@ -61,7 +61,7 @@ public class GameObject {
 	    
 	    
 	    a = new animation();
-		i = new ImageIcon(img).getImage();
+		this.i = i;
 		a.addScene(i, 250);
 	}
 	

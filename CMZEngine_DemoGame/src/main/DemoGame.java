@@ -1,10 +1,11 @@
 package main;
-//<<<<<<< HEAD
-//http://www.google.com/#hl=en&sclient=psy-ab&q=sprite+animation+tutorial&oq=sprite+animation&gs_l=serp.1.1.0l4.0.0.1.2308.0.0.0.0.0.0.0.0..0.0.les%3B..0.0...1c..4.psy-ab.duXUlb1Ik3U&pbx=1&bav=on.2,or.r_gc.r_pw.r_qf.&fp=11cb6b782ebbe3ce&biw=1366&bih=622
 import java.awt.*;
 import java.awt.event.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import main.Levels.*;
+
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 //import javax.media.opengl.*;
 
 import java.awt.Graphics2D;
@@ -14,7 +15,6 @@ import java.awt.Window;
 import java.io.File;
 
 import javax.swing.ImageIcon;
-//>>>>>>> dce197fa73598ebfc3147fb391181108011347d9
 
 public class DemoGame extends Core {
 	private int time = 0;
@@ -47,6 +47,8 @@ public class DemoGame extends Core {
 		boolean timeForRendering = true;
 		
 		Goal demoGoal = new Goal(800, 200);	
+		GameLevel Level1 = new LevelOne();
+		DemoEngine.addLevel(Level1);
 		
 		DemoEngine.addGoal(demoGoal);
 		
