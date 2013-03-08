@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.io.File;
 
 import main.Graphics.Camera;
+import main.Sound.GameSound;
 import main.gameObject.GameObject;
 
 import org.jbox2d.collision.shapes.PolygonShape;
@@ -73,15 +74,16 @@ public class CMZEngine {
 		for(int i = 0; i < gameObjects.size(); i++)
 		{
 			GameObject temp = gameObjects.get(i);
-			g.drawImage(temp.getImage(), (int)temp.getPosition().x, (int)temp.getPosition().y, temp.getWidth(), temp.getHeight(), null);
+			g.drawImage(temp.getAnimationImage(), (int)temp.getPosition().x, (int)temp.getPosition().y, temp.getWidth(), temp.getHeight(), null);
 		}
 		
-		g.setColor(Color.BLUE);
+		/*g.setColor(Color.BLUE);
 		//g.drawString("Engine Messages\n" + engine_log, 300, 50);
 		g.drawRect((int)body.getPosition().x, (int)body.getPosition().y, 50, 50);
 		
 		g.setColor(Color.CYAN);
 		g.drawLine((int)groundBody.getPosition().x - 40, (int)groundBody.getPosition().y, (int)groundBody.getPosition().x + 800, (int)groundBody.getPosition().y);
+	*/
 	}
 
 
@@ -90,30 +92,32 @@ public class CMZEngine {
 		System.out.println("Updating Physics..." + gameAction);
 		engine_log += "\nUpdating Physics..." + gameAction;
 		
+		GameObject player1 = this.gameObjects.get(0);
+		
 		//body.setTransform(new Vec2((body.getPosition().x + 1), (body.getPosition().y + 1)), 0.0f);
 		
 		if(gameAction == "Right")
 		{
-			body.setTransform(new Vec2((body.getPosition().x + 2), (body.getPosition().y)), 0.0f);
+			player1.getGameBody().setTransform(new Vec2((player1.getGameBody().getPosition().x + 2), (player1.getGameBody().getPosition().y)), 0.0f);
 		}
 		if(gameAction == "Left")
 		{
-			body.setTransform(new Vec2((body.getPosition().x - 2), (body.getPosition().y)), 0.0f);
+			player1.getGameBody().setTransform(new Vec2((player1.getGameBody().getPosition().x - 2), (player1.getGameBody().getPosition().y)), 0.0f);
 		}
-		if(gameAction == "Up")
+		/*if(gameAction == "Up")
 		{
 			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y - 2)), 0.0f);
-		}
-		if(gameAction == "Down")
+		}*/
+		/*if(gameAction == "Down")
 		{
 			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y + 2)), 0.0f);
-		}
+		}*/
 		
 		//jBox trial
 		this.jBoxWorld.step(timeStep, velocityIterations, positionIterations);
 		
-		Vec2 testVec = body.getPosition();
-		float angle = body.getAngle();
+		Vec2 testVec = player1.getGameBody().getPosition();
+		float angle = player1.getGameBody().getAngle();
 		System.out.println("Box X Position: " + testVec.x + " Box Y Position: " + testVec.y + " BoxAngle: " + angle);
 		engine_log += "\nBox X Position: " + testVec.x + " Box Y Position: " + testVec.y + " BoxAngle: " + angle;
 		
@@ -135,9 +139,13 @@ public class CMZEngine {
 	{
 		for(int i = 0; i < gameObjects.size(); i++)
 		{
-			GameObject curr = gameObjects.get(i);
-			if(!curr.getDefaultSound().isPlaying)
-				curr.getDefaultSound().play();
+			GameSound curr = gameObjects.get(i).getDefaultSound();
+			
+			if(!curr.equals(null))
+			{
+				if(!curr.isPlaying)
+					curr.play();
+			}
 		}
 	}
 
@@ -172,13 +180,13 @@ public class CMZEngine {
 	    //TextBox.setText("Init Started...");
 	    //GameFrame.add(TextBox);
 	    
-	    BodyDef groundBodyDef = new BodyDef();
+	    /*BodyDef groundBodyDef = new BodyDef();
 	    //groundBodyDef.type = BodyType.DYNAMIC;
 	    groundBodyDef.position.set(0.0f, 700.0f);
 	    groundBody = this.jBoxWorld.createBody(groundBodyDef);
 	    
 	    PolygonShape groundBox = new PolygonShape();
-	    groundBox.setAsEdge(new Vec2(-40.0f,0.0f), new Vec2(800.0f,0.0f));
+	    groundBox.setAsBox(400, 20, new Vec2(0.0f, 700f), 0.0f);
 	    
 	    
 	    
@@ -200,7 +208,7 @@ public class CMZEngine {
 	    
 	    body.createFixture(dynamicFixtureDef);
 	    
-	    
+	    */
 	    //int frameWidth = 500;
 	    //int frameHeight = 500;
 	    //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -209,7 +217,7 @@ public class CMZEngine {
 	}
 	
 	public void createObject(int x, int y, int w, int h, String img, boolean isMovable)
-	{
+	{		
 		GameObject go = new GameObject(new Vec2(x,y), w, h, img, isMovable);
 		
 		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));

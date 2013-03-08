@@ -15,22 +15,32 @@ import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 
 import main.GameVector;
+import main.Graphics.Sprite;
 import main.Graphics.animation;
 import main.Sound.GameSound;
 
 
 public class GameObject {
 	
+	//Sound 
 	private GameSound defaultSound;
+	
+	//Position
 	private Vec2 position;
 	float width;
 	float height;
+	
+	//jBox2D
 	private BodyDef bodyDef; 
 	private Body gameBody;
 	private FixtureDef fixture;
+	
+	//Animation
 	private Image i;
 	private animation a;
 	private PolygonShape bb;
+	private Sprite sprite;
+	
 	
 	public GameObject(int x, int y)
 	{	
@@ -153,6 +163,23 @@ public class GameObject {
 	public void setDefaultSound(GameSound defaultSound) {
 		this.defaultSound = defaultSound;
 	}
+	
+	public Sprite getSprite() {
+		return sprite;
+	}
 
+	public void setSprite(Sprite s) {
+		this.sprite = s;
+	}
+
+	public void addScenetoAnimation(Image i)
+	{
+		this.a.addScene(i, 250);
+	}
+
+	public Image getAnimationImage() {
+		// TODO Auto-generated method stub
+		return this.a.getImage();
+	}
 	
 }

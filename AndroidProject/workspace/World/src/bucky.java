@@ -19,6 +19,7 @@ public class bucky{
 		bg = new ImageIcon("c:\\images\\800px-TWW_parallax_scrolling_sample_1.gif").getImage();
 		Image sprite1= new ImageIcon("c:\\images\\java1.png").getImage();
 		Image sprite2= new ImageIcon("c:\\images\\java2.png").getImage();
+		Toolkit toolkit = new Toolkit();
 		a = new animation();
 		a.addScene(sprite1, 250);
 		a.addScene(sprite2, 250);

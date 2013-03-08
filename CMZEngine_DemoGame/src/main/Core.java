@@ -53,7 +53,7 @@ public abstract class Core implements KeyListener {
 	}
 	
 	public void gameLoop() {
-		long startTime = System.currentTimeMillis();
+		/*long startTime = System.currentTimeMillis();
 		long cumTime = startTime;
 		
 		while(running)
@@ -72,7 +72,7 @@ public abstract class Core implements KeyListener {
 			{
 				Thread.sleep(20);
 			} catch(Exception ex) {}
-		}
+		}*/
 	}
 	
 	public void update(long timePassed) {

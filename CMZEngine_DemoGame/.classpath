@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="/CMZEngine"/>
-	<classpathentry kind="lib" path="C:/Users/zaguanno/Desktop/HOME/Class/game-engine-CMZ/jbox2d-library/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Colin/Development/GameEngineArch/GameEngineCMZ/game-engine-CMZ/jbox2d-library/slf4j-api-1.7.2.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CMZGameEngine_Android"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

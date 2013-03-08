@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src2</name>
+			<type>2</type>
+			<location>C:/Users/Colin/Development/GameEngineArch/GameEngineCMZ/game-engine-CMZ/AndroidProject/workspace/World/src</location>
+		</link>
+	</linkedResources>
 </projectDescription>
