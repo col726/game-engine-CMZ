@@ -31,6 +31,8 @@ public class CMZEngine {
 	
 	public Camera gameCamera;
 	private List<GameObject> gameObjects;
+	private List<GameLevel> Levels;
+	private int CurrentLevel = 0;
 	private GameObject world;
 	private JFrame GameFrame = new JFrame();
 	private JLabel TextBox = new JLabel();
@@ -59,6 +61,7 @@ public class CMZEngine {
 	{
 		gameCamera = new Camera();
 		gameObjects = new ArrayList<GameObject>();
+		Levels = new ArrayList<GameLevel>();
 		gravity = new Vec2(0.0f, 10.0f);
 		jBoxWorld = new World(gravity, doSleep);
 		
@@ -69,6 +72,9 @@ public class CMZEngine {
 
 	//Only render objects within camera viewpoint
 	public void Render(Graphics2D g) {
+		Levels.get(CurrentLevel).renderLevel(g);
+		
+		//Levels.get(CurrentLevel).getGoal().showGoal(g);
 		GameGoal.showGoal(g);
 		
 		for(int i = 0; i < gameObjects.size(); i++)
@@ -88,6 +94,7 @@ public class CMZEngine {
 
 
 	public void UpdatePhysics(String gameAction) {
+		Levels.get(CurrentLevel).updatePhysics(gameAction);
 		// TODO Auto-generated method stub
 		System.out.println("Updating Physics..." + gameAction);
 		engine_log += "\nUpdating Physics..." + gameAction;
@@ -216,9 +223,26 @@ public class CMZEngine {
 	    //GameFrame.setVisible(true);
 	}
 	
+<<<<<<< HEAD
 	public void createObject(int x, int y, int w, int h, String img, boolean isMovable)
 	{		
 		GameObject go = new GameObject(new Vec2(x,y), w, h, img, isMovable);
+=======
+	public void addLevel(GameLevel level) {
+		try
+		{
+			Levels.add(level);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+	
+	public void createObject(int x, int y, int w, int h, Image i, boolean isMovable)
+	{
+		GameObject go = new GameObject(new Vec2(x,y), w, h, i, isMovable);
+>>>>>>> bf740d55eb34e255eeca2dd67a9cd1a0a85502ed
 		
 		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
 		
