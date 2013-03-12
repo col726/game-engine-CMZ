@@ -1,6 +1,7 @@
 package main.Levels;
 
 import java.awt.Image;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 
@@ -19,11 +20,18 @@ public class LevelOne extends GameLevel {
 	    velocityIterations = 6;
 	    positionIterations = 12;
 	    
+	    File sound = new File("res/sounds/retro.wav");
+	    
 	    Image ui = new ImageIcon("res/images/sprite3.png").getImage();
 	    addUser(200, 400, 25, 25, ui);
 	    
 	    Image i = new ImageIcon("res/images/sprite0.png").getImage();
-	    createObject(300, 600, 500, 10, i, false);
+	    createObject(300, 600, 500, 10, i, false, sound);
+	    
+	    
+	    Image i2 = new ImageIcon("res/images/floor.png").getImage();
+		createObject(0, 600, 800, 50, i2, false, sound);
+	    
 	}
 
 }

@@ -58,12 +58,11 @@ public class DemoGame extends Core {
 		//DemoEngine.createObject(0, 8, 75, 75, i, true);
 		
 		Image i = new ImageIcon("res/images/sprite0.png").getImage();
-		File sound = new File("res/sounds/retro.wav");
-		//DemoEngine.createObject(0, 8, 34, 56, "/PROJECT_LOC/res/images/sprite0.png", true);
-		DemoEngine.createObject(250, 250, 34, 56, i, true, sound);
 		
-		Image i2 = new ImageIcon("res/images/floor.png").getImage();
-		DemoEngine.createObject(0, 600, 800, 50, i2, false, sound);
+		//DemoEngine.createObject(0, 8, 34, 56, "/PROJECT_LOC/res/images/sprite0.png", true);
+		//DemoEngine.createObject(250, 250, 34, 56, i, true, sound);
+		
+		
 		
 		while(running)
 		{

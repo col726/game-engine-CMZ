@@ -13,6 +13,7 @@ import org.jbox2d.dynamics.World;
 
 import main.PathFindingInterfaces.Mover;
 import main.PathFindingInterfaces.TileBasedMap;
+import main.Sound.GameSound;
 import main.gameObject.GameObject;
 
 public class GameLevel implements TileBasedMap {
@@ -145,6 +146,20 @@ public class GameLevel implements TileBasedMap {
 		LevelGoal.showGoal(g);
 		renderLevelUnits(g);
 		renderUser(g);
+	}
+	
+	public void UpdateSound()
+	{
+		for(int i = 0; i < LevelUnits.size(); i++)
+		{
+			GameSound curr = LevelUnits.get(i).getDefaultSound();
+			
+			if(!curr.equals(null))
+			{
+				if(!curr.isPlaying)
+					curr.play();
+			}
+		}
 	}
 	
 	private void renderUser(Graphics2D g) {
