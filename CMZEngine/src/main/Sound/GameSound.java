@@ -28,12 +28,19 @@ public class GameSound {
         
 	}
 	
+	public GameSound() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void play()
 	{
-		c.setFramePosition(0);
-		c.loop(20);
-		c.start();
-		isPlaying = true;
+		if(c != null)
+		{
+			c.setFramePosition(0);
+			c.loop(20);
+			c.start();
+			isPlaying = true;
+		}
 	}
 	
 	public void stop()

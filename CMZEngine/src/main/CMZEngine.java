@@ -73,23 +73,6 @@ public class CMZEngine {
 	//Only render objects within camera viewpoint
 	public void Render(Graphics2D g) {
 		Levels.get(CurrentLevel).renderLevel(g);
-		
-		//Levels.get(CurrentLevel).getGoal().showGoal(g);
-		GameGoal.showGoal(g);
-		
-		/*for(int i = 0; i < gameObjects.size(); i++)
-		{
-			GameObject temp = gameObjects.get(i);
-			g.drawImage(temp.getAnimationImage(), (int)temp.getPosition().x, (int)temp.getPosition().y, temp.getWidth(), temp.getHeight(), null);
-		}*/
-		
-		/*g.setColor(Color.BLUE);
-		//g.drawString("Engine Messages\n" + engine_log, 300, 50);
-		g.drawRect((int)body.getPosition().x, (int)body.getPosition().y, 50, 50);
-		
-		g.setColor(Color.CYAN);
-		g.drawLine((int)groundBody.getPosition().x - 40, (int)groundBody.getPosition().y, (int)groundBody.getPosition().x + 800, (int)groundBody.getPosition().y);
-	*/
 	}
 
 
@@ -98,20 +81,6 @@ public class CMZEngine {
 		// TODO Auto-generated method stub
 		System.out.println("Updating Physics..." + gameAction);
 		engine_log += "\nUpdating Physics..." + gameAction;
-		
-		//body.setTransform(new Vec2((body.getPosition().x + 1), (body.getPosition().y + 1)), 0.0f);
-		
-		
-		
-		//engine_log += "\nBox X Position: " + testVec.x + " Box Y Position: " + testVec.y + " BoxAngle: " + angle;
-		
-		
-		/*try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 		
 	}
 	
@@ -122,13 +91,6 @@ public class CMZEngine {
 		// TODO Auto-generated method stub
 		System.out.println("Updating AI..." + gameAction);
 		engine_log += "\nUpdating AI..." + gameAction;
-		//try {
-		//	Thread.sleep(1500);
-		//} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-		//	e.printStackTrace();
-		//}
-		
 		
 	}
 	
@@ -139,49 +101,7 @@ public class CMZEngine {
 
 
 	public void Init() {
-		// TODO Auto-generated method stub
-		//world = new GameObject();
-		//JFrame.setDefaultLookAndFeelDecorated(true);
-		//GameFrame.setTitle("My First Swing Application");
-		//GameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    //JLabel label = new JLabel("Welcome");
-	    //TextBox.setText("Init Started...");
-	    //GameFrame.add(TextBox);
-	    
-	    /*BodyDef groundBodyDef = new BodyDef();
-	    //groundBodyDef.type = BodyType.DYNAMIC;
-	    groundBodyDef.position.set(0.0f, 700.0f);
-	    groundBody = this.jBoxWorld.createBody(groundBodyDef);
-	    
-	    PolygonShape groundBox = new PolygonShape();
-	    groundBox.setAsBox(400, 20, new Vec2(0.0f, 700f), 0.0f);
-	    
-	    
-	    
-	    groundBody.createFixture(groundBox, 0.0f);
-	    
-	    dynamicBodyDef = new BodyDef();
-	    dynamicBodyDef.type = BodyType.DYNAMIC;
-	    dynamicBodyDef.position.set(0.0f, 4.0f);
-	    
-	    body = this.jBoxWorld.createBody(dynamicBodyDef);
-	    
-	    PolygonShape dynamicShape = new PolygonShape();
-	    dynamicShape.setAsBox(50.0f, 50.0f);
-	    
-	    FixtureDef dynamicFixtureDef = new FixtureDef();
-	    dynamicFixtureDef.shape = dynamicShape;
-	    dynamicFixtureDef.density = 1.0f;
-	    dynamicFixtureDef.friction = 0.3f;
-	    
-	    body.createFixture(dynamicFixtureDef);
-	    
-	    */
-	    //int frameWidth = 500;
-	    //int frameHeight = 500;
-	    //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	    //GameFrame.setBounds((int) screenSize.getWidth() - frameWidth, 0, frameWidth, frameHeight);
-	    //GameFrame.setVisible(true);
+		
 	}
 	
 	
@@ -195,6 +115,7 @@ public class CMZEngine {
 			System.out.println(e);
 		}
 		
+		level.Init();
 	}
 
 	public void createObject(int x, int y, int w, int h, Image i, boolean isMovable)

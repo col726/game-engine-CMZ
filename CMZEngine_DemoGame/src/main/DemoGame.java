@@ -36,31 +36,16 @@ public class DemoGame extends Core {
 		Window w = s.getFullScreenWindow();
 		w.addKeyListener(this);
 		DemoEngine = new CMZEngine();
-		toolkit = Toolkit.getDefaultToolkit();
 	}
 	
 	protected String enginemess = "";
 	
 	public void gameLoop() {
-		boolean timeForUpdatingAI = true;
-		boolean timeForUpdatingPhysics = true;
-		boolean timeForRendering = true;
 		
-		Goal demoGoal = new Goal(800, 200);	
 		GameLevel Level1 = new LevelOne();
 		DemoEngine.addLevel(Level1);
 		
-		DemoEngine.addGoal(demoGoal);
-		
 		DemoEngine.Init();
-		
-		//Image i = new ImageIcon("/PROJECT_LOC/res/images/sprite0.png").getImage();
-		//DemoEngine.createObject(0, 8, 75, 75, i, true);
-		
-		Image i = new ImageIcon("res/images/sprite0.png").getImage();
-		
-		//DemoEngine.createObject(0, 8, 34, 56, "/PROJECT_LOC/res/images/sprite0.png", true);
-		//DemoEngine.createObject(250, 250, 34, 56, i, true, sound);
 		
 		
 		
@@ -76,7 +61,6 @@ public class DemoGame extends Core {
 			mess += "\n--Physics Updated";
 			updateStatistics();
 			DemoEngine.UpdateSound();
-			FPSControl(DemoEngine);
 			mess += "\n--Frames Update";
 			
 			//enginemess = DemoEngine.getUnreadMessages();
@@ -86,8 +70,6 @@ public class DemoGame extends Core {
 			DemoEngine.Render(g);
 			g.dispose();
 			s.update();
-			
-			SDL_Delay(1);
 		}
 
 	}
@@ -98,53 +80,12 @@ public class DemoGame extends Core {
 		g.fillRect(0, 0, s.getWidth(), s.getHeight());
 		g.setColor(w.getForeground());
 		drawString(g, "Press ESC to exit...", 10, 10);
-		
+		g.drawImage(new ImageIcon("res/images/game_background.jpg").getImage(), 0, 0, s.getWidth(), s.getHeight(), null);
 		//drawString(g, "Game Messages\n" + mess, 40, 50);
 		//drawString(g, "Engine Messages\n" + enginemess, 300, 50);
 	}
 
-	private void SDL_Delay(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private int SDL_GetTicks() {
-		// TODO Auto-generated method stub
-		return 60;
-	}
-
-	private boolean getInput() {
-		// TODO Auto-generated method stub
-		
-		return false;
-	}
 	
-	private void FPSControl(CMZEngine game) {
-		int act_time = SDL_GetTicks();
-		int frames = 0;
-		boolean need_to_redraw = true;
-		
-		while(act_time - time >= REDRAWING_PERIOD && frames<MAX_FRAME_SKIP) 
-		{
-			time += REDRAWING_PERIOD;
-			
-			//keyboard->cycle();
-			//if (!game->cycle(k)) 
-				//quit = true;
-			act_time = SDL_GetTicks();
-			need_to_redraw = true;
-			frames++;
-		}
-		
-		if (time < act_time)
-			time = act_time;
-		
-		if(need_to_redraw)
-		{
-			//game.Render();
-			need_to_redraw = false;
-		}
-	}
 
 	private void updateStatistics() {
 		// TODO Auto-generated method stub
@@ -153,7 +94,6 @@ public class DemoGame extends Core {
 
 	//Note: pollForOSMessages returns true if the game loop should exit
 	private boolean pollForOSMessages() {
-		// TODO Auto-generated method stub
 		/*while ( event = SDL_PollEvent() ) {
 			switch ( event.type ) {
 				case SDL_KEYDOWN:

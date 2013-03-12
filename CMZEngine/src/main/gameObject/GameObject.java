@@ -73,6 +73,10 @@ public class GameObject {
 	    a = new animation();
 		this.i = i;
 		a.addScene(i, 250);
+		
+		sprite = new Sprite(a);
+		
+		defaultSound = new GameSound();
 	}
 	
 	public GameObject(Vec2 p, int w, int h, Image i, boolean canMove, File soundFile)
@@ -154,6 +158,7 @@ public class GameObject {
 	public void updatePosition()
 	{
 		this.position = this.gameBody.getPosition();
+		this.sprite.update(250);
 	}
 
 	public GameSound getDefaultSound() {
@@ -175,6 +180,7 @@ public class GameObject {
 	public void addScenetoAnimation(Image i)
 	{
 		this.a.addScene(i, 250);
+		this.sprite = new Sprite(a);
 	}
 
 	public Image getAnimationImage() {

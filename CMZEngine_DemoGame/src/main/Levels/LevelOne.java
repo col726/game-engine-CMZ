@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import main.GameLevel;
 import main.Goal;
+import main.Sound.GameSound;
 
 public class LevelOne extends GameLevel {
 
@@ -20,17 +21,27 @@ public class LevelOne extends GameLevel {
 	    velocityIterations = 6;
 	    positionIterations = 12;
 	    
-	    File sound = new File("res/sounds/retro.wav");
+	    try {
+			this.LevelMusic = new GameSound(new File("res/sounds/retro.wav"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    this.LevelBackground = new ImageIcon("res/images/game_background.jpg").getImage();
 	    
-	    Image ui = new ImageIcon("res/images/sprite3.png").getImage();
-	    addUser(200, 400, 25, 25, ui);
+	    Image ui = new ImageIcon("res/images/sprite0.png").getImage();
+	    addUser(200, 400, 34, 56, ui);
+	    
+	    this.User.addScenetoAnimation(new ImageIcon("res/images/sprite1.png").getImage());
+	    this.User.addScenetoAnimation(new ImageIcon("res/images/sprite2.png").getImage());
+	    this.User.addScenetoAnimation(new ImageIcon("res/images/sprite3.png").getImage());
 	    
 	    Image i = new ImageIcon("res/images/sprite0.png").getImage();
-	    createObject(300, 600, 500, 10, i, false, sound);
+	    createObject(300, 400, 34, 56, i, false);
 	    
 	    
 	    Image i2 = new ImageIcon("res/images/floor.png").getImage();
-		createObject(0, 600, 800, 50, i2, false, sound);
+		createObject(0, 600, 800, 50, i2, false);
 	    
 	}
 
