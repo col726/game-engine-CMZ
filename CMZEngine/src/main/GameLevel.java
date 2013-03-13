@@ -15,6 +15,7 @@ import org.jbox2d.dynamics.World;
 import main.ArtificialIntelligence.AIModule;
 import main.PathFindingInterfaces.Mover;
 import main.PathFindingInterfaces.TileBasedMap;
+import main.Sound.GameSound;
 import main.gameObject.GameObject;
 
 public class GameLevel implements TileBasedMap {
@@ -39,6 +40,9 @@ public class GameLevel implements TileBasedMap {
 	protected GameObject User;
 	protected int AIUnitID;
 	protected AIModule AIUnit;
+	
+	protected GameSound LevelMusic;
+	protected Image LevelBackground;
 	
 	public GameLevel(int height, int width) {
 		s = new ScreenManager();
@@ -166,6 +170,7 @@ public class GameLevel implements TileBasedMap {
 		if(gameAction == "Right")
 		{
 			body.setTransform(new Vec2((body.getPosition().x + 2), (body.getPosition().y)), 0.0f);
+			
 		}
 		if(gameAction == "Left")
 		{
@@ -184,6 +189,8 @@ public class GameLevel implements TileBasedMap {
 	private void updateLevelPhysics() {
 		this.jBoxWorld.step(timeStep, velocityIterations, positionIterations);
 		
+		User.updatePosition();
+		
 		for(int i = 0; i < LevelUnits.size(); i++)
 		{
 			LevelUnits.get(i).updatePosition();
@@ -196,10 +203,27 @@ public class GameLevel implements TileBasedMap {
 		renderUser(g);
 	}
 	
+	public void UpdateSound()
+	{
+		
+		if(!LevelMusic.isPlaying)
+			LevelMusic.play();
+		
+		for(int i = 0; i < LevelUnits.size(); i++)
+		{
+			GameSound curr = LevelUnits.get(i).getDefaultSound();
+			
+			if(!curr.equals(null))
+			{
+				if(!curr.isPlaying)
+					curr.play();
+			}
+		}
+	}
+	
 	private void renderUser(Graphics2D g) {
-		Body body = User.getGameBody();
-		g.setColor(Color.BLUE);
-		g.fillRect((int)body.getPosition().x, (int)body.getPosition().y, User.getWidth(), User.getHeight());
+		//Body body = User.getGameBody();
+		g.drawImage(User.getImage(), (int)User.getPosition().x, (int)User.getPosition().y, User.getWidth(), User.getHeight(), null);
 	}
 	
 	private void renderLevelUnits(Graphics2D g) {
@@ -208,6 +232,11 @@ public class GameLevel implements TileBasedMap {
 			GameObject temp = LevelUnits.get(i);
 			g.drawImage(temp.getAnimationImage(), (int)temp.getPosition().x, (int)temp.getPosition().y, temp.getWidth(), temp.getHeight(), null);
 		}
+	}
+
+	public void Init() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
