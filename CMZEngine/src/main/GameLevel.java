@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Color;
+import java.awt.DisplayMode;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.File;
@@ -11,16 +12,20 @@ import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.World;
 
+import main.ArtificialIntelligence.AIModule;
 import main.PathFindingInterfaces.Mover;
 import main.PathFindingInterfaces.TileBasedMap;
 import main.Sound.GameSound;
 import main.gameObject.GameObject;
 
 public class GameLevel implements TileBasedMap {
+	protected ScreenManager s;
 	
 	private static final float MAX_SPEED = 10.5f;
 	private int TileWidth;
 	private int TileHeight;
+	private int PixelToTileWidth;
+	private int PixelToTileHeight;
 	private int[][] units;
 	private boolean[][] visited;
 	private List<GameObject> LevelUnits;
@@ -34,17 +39,25 @@ public class GameLevel implements TileBasedMap {
 	protected int positionIterations;
 	
 	protected GameObject User;
+	protected int AIUnitID;
+	protected AIModule AIUnit;
 	
 	protected GameSound LevelMusic;
 	protected Image LevelBackground;
 	
 	public GameLevel(int height, int width) {
+		s = new ScreenManager();
+		DisplayMode dm = s.getCurrentDisplayMode();
+		
 		LevelUnits = new ArrayList<GameObject>();
 		gravity = new Vec2(0.0f, 10.0f);
 		jBoxWorld = new World(gravity, doSleep);
 		
-		TileHeight = height;
-		TileWidth = width;
+		TileHeight = dm.getHeight(); //height;
+		TileWidth = dm.getWidth(); //width;
+		
+		PixelToTileHeight = (int)dm.getHeight() / TileHeight;
+		PixelToTileWidth = (int)dm.getWidth() / TileWidth;
 		
 		units = new int[TileWidth][TileHeight];
 		visited = new boolean[TileWidth][TileHeight];
@@ -88,6 +101,22 @@ public class GameLevel implements TileBasedMap {
 		return visited[x][y];
 	}
 	
+	public void setUnit(int x, int y, int unitID) {
+		int tileX = (int)(x / PixelToTileWidth);
+		int tileY = (int)(y / PixelToTileHeight);
+		units[tileX][tileY] = unitID;
+		
+		System.out.println("Unit " + unitID + " : " + x + " => " + tileX + "; " + y + " => " + tileY);
+	}
+	
+	public void setUnit(int x, int y, int w, int h, int unit) {
+		units[x][y] = unit;
+	}
+	
+	public GameObject getUnit(int unitID) {
+		return LevelUnits.get(unitID);
+	}
+	
 	public void createObject(int x, int y, int w, int h, Image i, boolean isMovable)
 	{
 		GameObject go = new GameObject(new Vec2(x,y), w, h, i, isMovable);
@@ -95,6 +124,8 @@ public class GameLevel implements TileBasedMap {
 		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
 		
 		LevelUnits.add(go);
+		int unitID = LevelUnits.lastIndexOf(go);
+		setUnit(x, y, unitID);
 	}
 	
 	public void createObject(int x, int y, int w, int h, Image i, boolean isMovable, File soundFile)
@@ -104,16 +135,34 @@ public class GameLevel implements TileBasedMap {
 		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
 		
 		LevelUnits.add(go);
+		int unitID = LevelUnits.lastIndexOf(go);
+		setUnit(x, y, unitID);
 	}
 	
 	public void addUser(int x, int y, int w, int h, Image i) {
 		User = new GameObject(new Vec2(x, y), w, h, i, true);
 		
 		User.setGameBody(this.jBoxWorld.createBody(User.getBodyDef()));
+		int unitID = -1;
+		setUnit(x, y, unitID);
+	}
+	
+	public void addAI(int x, int y, int w, int h, Image i) {
+		GameObject ai = new GameObject(new Vec2(x, y), w, h, i, false);
+		
+		ai.setGameBody(this.jBoxWorld.createBody(ai.getBodyDef()));
+		LevelUnits.add(ai);
+		int unitID = LevelUnits.lastIndexOf(ai);
+		setUnit(x, y, unitID);
+
+		AIUnitID = unitID;
+		AIUnit = new AIModule(AIUnitID, this);
 	}
 	
 	public void updatePhysics(String gameAction) {
 		updateUserPhysics(gameAction);
+		Vec2 newLocation = AIUnit.advance(this);
+		LevelUnits.get(AIUnitID).setGameObjectTransform(newLocation, 0.0f);
 		updateLevelPhysics();
 	}
 
@@ -181,7 +230,7 @@ public class GameLevel implements TileBasedMap {
 		for(int i = 0; i < LevelUnits.size(); i++)
 		{
 			GameObject temp = LevelUnits.get(i);
-			g.drawImage(temp.getImage(), (int)temp.getPosition().x, (int)temp.getPosition().y, temp.getWidth(), temp.getHeight(), null);
+			g.drawImage(temp.getAnimationImage(), (int)temp.getPosition().x, (int)temp.getPosition().y, temp.getWidth(), temp.getHeight(), null);
 		}
 	}
 

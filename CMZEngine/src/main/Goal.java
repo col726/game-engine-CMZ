@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class Goal {
-	private GameVector goalPoint;
+	public GameVector goalPoint;
 	
 	public Goal(int x, int y)
 	{

@@ -230,4 +230,11 @@ public class GameObject {
 		
 		return new Vec2(newX, newY);
 	}
+
+	public void setGameObjectTransform(Vec2 newLocation, float f) {
+		// TODO Auto-generated method stub
+		this.gameBody.setTransform(pixelToJBox(newLocation), f);
+		updatePosition();
+		
+	}
 }
