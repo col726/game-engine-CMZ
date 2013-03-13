@@ -8,6 +8,8 @@ import java.awt.Graphics2D;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Core implements KeyListener {
 	private static DisplayMode modes[] = {
@@ -21,7 +23,7 @@ public abstract class Core implements KeyListener {
 	};
 	protected boolean running;
 	protected ScreenManager s;
-	protected String GameAction = "";
+	protected String GameAction;//Future Work: make this a list
 	
 	public void stop() {
 		running = false;
@@ -91,7 +93,7 @@ public abstract class Core implements KeyListener {
 		else
 		{
 			mess = "Pressed : " + KeyEvent.getKeyText(keyCode);
-			GameAction = KeyEvent.getKeyText(keyCode);
+			GameAction= KeyEvent.getKeyText(keyCode);
 			e.consume();
 		}
 	}

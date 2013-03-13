@@ -60,9 +60,6 @@ public class CMZEngine {
 		Levels = new ArrayList<GameLevel>();
 		gravity = new Vec2(0.0f, 10.0f);
 		jBoxWorld = new World(gravity, doSleep);
-		
-		System.out.println("You Created a CMZ Engine!");
-		engine_log += "\nYou Created a CMZ Engine!";
 	}
 
 
@@ -74,9 +71,6 @@ public class CMZEngine {
 
 	public void UpdatePhysics(String gameAction) {
 		Levels.get(CurrentLevel).updatePhysics(gameAction);
-		// TODO Auto-generated method stub
-		System.out.println("Updating Physics..." + gameAction);
-		engine_log += "\nUpdating Physics..." + gameAction;
 		
 	}
 	

@@ -36,11 +36,12 @@ public class GameObject {
 	private BodyDef bodyDef; 
 	private Body gameBody;
 	private FixtureDef fixture;
+	private PolygonShape bb;
 	
 	//Animation
 	private Image i;
 	private animation a;
-	private PolygonShape bb;
+	
 	private Sprite sprite;
 	
 	
@@ -86,40 +87,16 @@ public class GameObject {
 		
 		sprite = new Sprite(a);
 		
-		defaultSound = new GameSound();
+		//defaultSound = new GameSound();
 	}
 	
 	public GameObject(Vec2 p, int w, int h, Image i, boolean canMove, File soundFile)
 	{	
-		this.position = p;
-		
-		this.width = (float)w;
-		this.height = (float)h;
-		
-		bodyDef = new BodyDef();
-		if (canMove)
-			bodyDef.type = BodyType.DYNAMIC;
-		
-		
-		Vec2 jBoxVec = pixelToJBox(p);
-		Vec2 jBoxW_H = pixelToJBox(new Vec2(p.x + w, p.y + h));
-		
-		bodyDef.position.set(jBoxVec.x, jBoxVec.y);
-		
-		bb = new PolygonShape();
-		bb.setAsBox((jBoxW_H.x - jBoxVec.x) /2, (jBoxW_H.y - jBoxVec.y)/2);
-		
-		fixture = new FixtureDef();
-		fixture.shape = bb;
-	    fixture.density = 1.0f;
-	    fixture.friction = 0.8f;
-		
-		a = new animation();
-		this.i = i;
-		a.addScene(i, 250);
+		this(p, w, h, i, canMove);
 		
 		try {
-			defaultSound = new GameSound(soundFile);
+			defaultSound = new GameSound(soundFile, true, p, w);
+			defaultSound.setLoop(0);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

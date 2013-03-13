@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jbox2d.collision.shapes.MassData;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.World;
@@ -140,9 +141,17 @@ public class GameLevel implements TileBasedMap {
 	}
 	
 	public void addUser(int x, int y, int w, int h, Image i) {
-		User = new GameObject(new Vec2(x, y), w, h, i, true);
+		File soundFile = new File("res/sounds/85897__sandyrb__huh-01.wav");
+		
+		User = new GameObject(new Vec2(x, y), w, h, i, true, soundFile);
+		
 		
 		User.setGameBody(this.jBoxWorld.createBody(User.getBodyDef()));
+		User.getGameBody().m_mass = User.getGameBody().getMass() * 4;
+		User.getGameBody().m_invMass = 1/User.getGameBody().m_mass;
+		
+		User.getDefaultSound().setSoundBody(this.jBoxWorld.createBody(User.getDefaultSound().getBodyDef()));
+		
 		int unitID = -1;
 		setUnit(x, y, unitID);
 	}
@@ -164,10 +173,12 @@ public class GameLevel implements TileBasedMap {
 		Vec2 newLocation = AIUnit.advance(this);
 		LevelUnits.get(AIUnitID).setGameObjectTransform(newLocation, 0.0f);
 		updateLevelPhysics();
+		this.jBoxWorld.step(timeStep, velocityIterations, positionIterations);
 	}
 
 	private void updateUserPhysics(String gameAction) {
 		Body body = User.getGameBody();
+		System.out.println(gameAction);
 		if(gameAction == "Right")
 		{
 			if (Math.abs(body.getLinearVelocity().x) < MAX_SPEED)
@@ -182,14 +193,19 @@ public class GameLevel implements TileBasedMap {
 		if(gameAction == "Up")
 		{
 			if(body.getLinearVelocity().y == 0)
-				body.applyLinearImpulse(new Vec2(0.0f, body.getMass() * -20), body.getWorldCenter());
+				body.applyLinearImpulse(new Vec2(0.0f, body.getMass() * -12), body.getWorldCenter());
+			
 		}
+		
+		if(gameAction == "Space")
+		{
+			User.getDefaultSound().play();
+		}
+		
+		User.updatePosition();
 	}
 	
 	private void updateLevelPhysics() {
-		this.jBoxWorld.step(timeStep, velocityIterations, positionIterations);
-		
-		User.updatePosition();
 		
 		for(int i = 0; i < LevelUnits.size(); i++)
 		{
@@ -209,7 +225,7 @@ public class GameLevel implements TileBasedMap {
 		if(!LevelMusic.isPlaying)
 			LevelMusic.play();
 		
-		for(int i = 0; i < LevelUnits.size(); i++)
+		/*for(int i = 0; i < LevelUnits.size(); i++)
 		{
 			GameSound curr = LevelUnits.get(i).getDefaultSound();
 			
@@ -218,7 +234,7 @@ public class GameLevel implements TileBasedMap {
 				if(!curr.isPlaying)
 					curr.play();
 			}
-		}
+		}*/
 	}
 	
 	private void renderUser(Graphics2D g) {

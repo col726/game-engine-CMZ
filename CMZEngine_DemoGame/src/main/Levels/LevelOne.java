@@ -50,6 +50,7 @@ public class LevelOne extends GameLevel {
 	    Image box = new ImageIcon("res/images/box128.png").getImage();
 	    addUser(0, 500, 34, 68, ui);
 	    
+	    
 	    for(int k = 0; k < 12; k++)
 	    {
 	    	createObject((k*64), 600, 64, 64, box, false);
