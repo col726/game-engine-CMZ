@@ -14,6 +14,8 @@ public class AIModule {
 	private int UnitID;
 	private PathFinder Finder;
 	private Path Path;
+	private int advanceCounter = 1;
+	
 	
 	public AIModule(int aiUnitID, GameLevel level) {
 		Level = level;
@@ -30,10 +32,10 @@ public class AIModule {
 		int x = (int)(level.getUnit(UnitID)).getPosition().x;
 		int y = (int)(level.getUnit(UnitID)).getPosition().y;
 		
-		if (Path != null)
+		if (Path != null && advanceCounter < Path.getLength())
 		{
-			x = Path.getStep(1).getX();
-			y = Path.getStep(1).getY();
+			x = Path.getStep(advanceCounter).getX();
+			y = Path.getStep(advanceCounter).getY();
 			
 			level.getUnit(UnitID).getGameBody().setTransform(new Vec2(x, y), 0.0f);
 			
@@ -41,10 +43,13 @@ public class AIModule {
 			int aiStartY = (int)(level.getUnit(UnitID)).getPosition().y;
 			
 			System.out.println(x + ", " + y + " => " + aiStartX + ", " + aiStartY);
-			
-			Path = Finder.findPath(new UnitMover(UnitID), aiStartX, aiStartY, level.getGoal().goalPoint.getX(), level.getGoal().goalPoint.getY());
+			if(advanceCounter == 10)
+			{
+				Path = Finder.findPath(new UnitMover(UnitID), aiStartX, aiStartY, level.getGoal().goalPoint.getX(), level.getGoal().goalPoint.getY());
+				advanceCounter = 0;
+			}
 		}
-		
+		advanceCounter++;
 		return new Vec2(x, y);
 		
 		

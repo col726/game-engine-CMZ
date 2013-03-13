@@ -48,12 +48,14 @@ public class LevelOne extends GameLevel {
 	    createObject(300, 400, 34, 56, i, false);
 	    
 	    Image box = new ImageIcon("res/images/box128.png").getImage();
-	    addUser(0, 300, 34, 68, ui);
+	    addUser(0, 500, 34, 68, ui);
 	    
 	    for(int k = 0; k < 12; k++)
 	    {
 	    	createObject((k*64), 600, 64, 64, box, false);
 	    }
+	    
+	    createObject(640, 550, 32, 32, box, true);
 	    
 	    
 	    //Image i2 = new ImageIcon("res/images/floor.png").getImage();
