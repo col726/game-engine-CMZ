@@ -29,6 +29,8 @@ public class GameObject {
 	private Vec2 position;
 	float width;
 	float height;
+	float drawWidth;
+	float drawHeight;
 	
 	//jBox2D
 	private BodyDef bodyDef; 
@@ -51,22 +53,30 @@ public class GameObject {
 	public GameObject(Vec2 p, int w, int h, Image i, boolean canMove)
 	{
 		this.position = p;
+		this.drawWidth = (float)w;
+		this.drawHeight = (float)h;
 		
-		this.width = (float)w;
-		this.height = (float)h;
+		Vec2 jBoxVec = pixelToJBox(p);
+		Vec2 jBoxW_H = pixelToJBox(new Vec2(p.x + w, p.y + h));
+		
+		this.width = (float)(jBoxW_H.x - jBoxVec.x);
+		this.height = (float)(jBoxW_H.y - jBoxVec.y);
 		
 		bodyDef = new BodyDef();
-		bodyDef.position.set(p);
+		
+		
+		bodyDef.position.set(jBoxVec.x, jBoxVec.y);
+		
 		if (canMove)
 			bodyDef.type = BodyType.DYNAMIC;
 		
 		bb = new PolygonShape();
-		bb.setAsBox(width, height);
+		bb.setAsBox(this.width/2, this.height/2);
 		
 		fixture = new FixtureDef();
 		fixture.shape = bb;
 	    fixture.density = 1.0f;
-	    fixture.friction = 0.3f;
+	    fixture.friction = 0.8f;
 		
 	    
 	    
@@ -80,7 +90,7 @@ public class GameObject {
 	}
 	
 	public GameObject(Vec2 p, int w, int h, Image i, boolean canMove, File soundFile)
-	{
+	{	
 		this.position = p;
 		
 		this.width = (float)w;
@@ -89,15 +99,20 @@ public class GameObject {
 		bodyDef = new BodyDef();
 		if (canMove)
 			bodyDef.type = BodyType.DYNAMIC;
-		bodyDef.position.set(p);
+		
+		
+		Vec2 jBoxVec = pixelToJBox(p);
+		Vec2 jBoxW_H = pixelToJBox(new Vec2(p.x + w, p.y + h));
+		
+		bodyDef.position.set(jBoxVec.x, jBoxVec.y);
 		
 		bb = new PolygonShape();
-		bb.setAsBox(width, height);
+		bb.setAsBox((jBoxW_H.x - jBoxVec.x) /2, (jBoxW_H.y - jBoxVec.y)/2);
 		
 		fixture = new FixtureDef();
 		fixture.shape = bb;
 	    fixture.density = 1.0f;
-	    fixture.friction = 0.3f;
+	    fixture.friction = 0.8f;
 		
 		a = new animation();
 		this.i = i;
@@ -147,17 +162,17 @@ public class GameObject {
 
 	public int getWidth() {
 		// TODO Auto-generated method stub
-		return (int)this.width;
+		return (int)this.drawWidth;
 	}
 
 	public int getHeight() {
 		// TODO Auto-generated method stub
-		return (int)this.height;
+		return (int)this.drawHeight;
 	}
 	
 	public void updatePosition()
 	{
-		this.position = this.gameBody.getPosition();
+		this.position = jBoxToPixel(this.gameBody.getPosition());
 		this.sprite.update(250);
 	}
 
@@ -188,4 +203,31 @@ public class GameObject {
 		return this.a.getImage();
 	}
 	
+	
+	private Vec2 pixelToJBox(Vec2 v){
+		
+		float newX, newY, tempX, tempY;
+		
+		tempX = v.x /768;
+		tempY = v.y/1366;
+		
+		newX = -100 + (tempX * 200);
+		newY = -100 + (tempY * 200);
+		
+		return new Vec2(newX, newY);
+	}
+	
+	
+	private Vec2 jBoxToPixel(Vec2 v){
+		
+		float newX, newY, tempX, tempY;
+		
+		tempX = (v.x + 100) / 200;
+		tempY = (v.y + 100) / 200;
+		
+		newX = (tempX * 768);
+		newY = (tempY * 1366);
+		
+		return new Vec2(newX, newY);
+	}
 }

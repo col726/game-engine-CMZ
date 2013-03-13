@@ -52,10 +52,6 @@ public class CMZEngine {
     
     private String engine_log = "";
     
-    private Goal GameGoal;
-    
-    private Toolkit toolkit;
-    private MediaTracker manager;
     
 	public CMZEngine()
 	{
@@ -135,10 +131,10 @@ public class CMZEngine {
 		gameObjects.add(go);
 	}
 	
-	public void addGoal(Goal gameGoal)
+	/*public void addGoal(Goal gameGoal)
 	{
 		GameGoal = gameGoal;
-	}
+	}*/
 
 
 	public String getUnreadMessages() {

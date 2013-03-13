@@ -18,6 +18,7 @@ import main.gameObject.GameObject;
 
 public class GameLevel implements TileBasedMap {
 	
+	private static final float MAX_SPEED = 10.5f;
 	private int TileWidth;
 	private int TileHeight;
 	private int[][] units;
@@ -120,20 +121,19 @@ public class GameLevel implements TileBasedMap {
 		Body body = User.getGameBody();
 		if(gameAction == "Right")
 		{
-			body.setTransform(new Vec2((body.getPosition().x + 2), (body.getPosition().y)), 0.0f);
+			if (Math.abs(body.getLinearVelocity().x) < MAX_SPEED)
+				body.applyLinearImpulse(new Vec2(body.getMass() * 1.5f, 0.0f), body.getWorldCenter());
 			
 		}
 		if(gameAction == "Left")
 		{
-			body.setTransform(new Vec2((body.getPosition().x - 2), (body.getPosition().y)), 0.0f);
+			if (Math.abs(body.getLinearVelocity().x) < MAX_SPEED)
+				body.applyLinearImpulse(new Vec2(body.getMass() * -1.5f, 0.0f), body.getWorldCenter());
 		}
 		if(gameAction == "Up")
 		{
-			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y - 2)), 0.0f);
-		}
-		if(gameAction == "Down")
-		{
-			body.setTransform(new Vec2((body.getPosition().x), (body.getPosition().y + 2)), 0.0f);
+			if(body.getLinearVelocity().y == 0)
+				body.applyLinearImpulse(new Vec2(0.0f, body.getMass() * -20), body.getWorldCenter());
 		}
 	}
 	

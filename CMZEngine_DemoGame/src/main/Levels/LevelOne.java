@@ -14,7 +14,7 @@ public class LevelOne extends GameLevel {
 	public LevelOne() {
 		super(50, 50);
 
-		Goal theGoal = new Goal(400, 500);	
+		Goal theGoal = new Goal(0, 0);	
 		setGoal(theGoal);
 		
 		timeStep = 1.0f / 60.0f;
@@ -30,18 +30,27 @@ public class LevelOne extends GameLevel {
 	    this.LevelBackground = new ImageIcon("res/images/game_background.jpg").getImage();
 	    
 	    Image ui = new ImageIcon("res/images/sprite0.png").getImage();
-	    addUser(200, 400, 34, 56, ui);
+	    //addUser(200, 400, ui.getWidth(null), ui.getHeight(null), ui);
 	    
-	    this.User.addScenetoAnimation(new ImageIcon("res/images/sprite1.png").getImage());
-	    this.User.addScenetoAnimation(new ImageIcon("res/images/sprite2.png").getImage());
-	    this.User.addScenetoAnimation(new ImageIcon("res/images/sprite3.png").getImage());
+	    //this.User.addScenetoAnimation(new ImageIcon("res/images/sprite1.png").getImage());
+	    //this.User.addScenetoAnimation(new ImageIcon("res/images/sprite2.png").getImage());
+	    //this.User.addScenetoAnimation(new ImageIcon("res/images/sprite3.png").getImage());
 	    
-	    Image i = new ImageIcon("res/images/sprite0.png").getImage();
-	    createObject(300, 400, 34, 56, i, false);
+	    //Image i = new ImageIcon("res/images/sprite0.png").getImage();
+	    //createObject(300, 400, 34, 56, i, false);
+	    
+	    Image i = new ImageIcon("res/images/box128.png").getImage();
+	    addUser(0, 300, 34, 68, ui);
 	    
 	    
-	    Image i2 = new ImageIcon("res/images/floor.png").getImage();
-		createObject(0, 600, 800, 50, i2, false);
+	    for(int k = 0; k < 12; k++)
+	    {
+	    	createObject((k*64), 600, 64, 64, i, false);
+	    }
+	    
+	    
+	    //Image i2 = new ImageIcon("res/images/floor.png").getImage();
+		//createObject(0, 600, 400, 50, i2, false);
 	    
 	}
 
