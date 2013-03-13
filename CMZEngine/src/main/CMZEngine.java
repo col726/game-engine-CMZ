@@ -75,7 +75,7 @@ public class CMZEngine {
 		Levels.get(CurrentLevel).renderLevel(g);
 		
 		//Levels.get(CurrentLevel).getGoal().showGoal(g);
-		GameGoal.showGoal(g);
+		//GameGoal.showGoal(g);
 		
 		for(int i = 0; i < gameObjects.size(); i++)
 		{

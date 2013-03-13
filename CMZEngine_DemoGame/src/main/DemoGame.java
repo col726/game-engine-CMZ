@@ -50,7 +50,7 @@ public class DemoGame extends Core {
 		GameLevel Level1 = new LevelOne();
 		DemoEngine.addLevel(Level1);
 		
-		DemoEngine.addGoal(demoGoal);
+		//DemoEngine.addGoal(demoGoal);
 		
 		DemoEngine.Init();
 		
