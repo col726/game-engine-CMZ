@@ -43,7 +43,7 @@ public class GameLevel implements TileBasedMap {
 	
 	protected GameObject User;
 	protected int AIUnitID;
-	protected AIModule AIUnit;
+	protected AIModule AIUnit = null;
 	
 	protected GameSound LevelMusic;
 	protected Image LevelBackground;
@@ -210,8 +210,11 @@ public class GameLevel implements TileBasedMap {
 	
 	public void updatePhysics(String gameAction) {
 		updateUserPhysics(gameAction);
-		Vec2 newLocation = AIUnit.advance(this);
-		LevelUnits.get(AIUnitID).setGameObjectTransform(newLocation, 0.0f);
+		if(AIUnit != null)
+		{
+			Vec2 newLocation = AIUnit.advance(this);
+			LevelUnits.get(AIUnitID).setGameObjectTransform(newLocation, 0.0f);
+		}
 		updateLevelPhysics();
 		this.jBoxWorld.step(timeStep, velocityIterations, positionIterations);
 	}

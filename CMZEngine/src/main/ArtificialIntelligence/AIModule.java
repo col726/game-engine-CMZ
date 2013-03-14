@@ -43,7 +43,7 @@ public class AIModule {
 			int aiStartY = (int)(level.getUnit(UnitID)).getPosition().y;
 			
 			//System.out.println(x + ", " + y + " => " + aiStartX + ", " + aiStartY);
-			if(advanceCounter == 10)
+			if(advanceCounter == 100)
 			{
 				Path = Finder.findPath(new UnitMover(UnitID), aiStartX, aiStartY, level.getGoal().goalPoint.getX(), level.getGoal().goalPoint.getY());
 				advanceCounter = 0;

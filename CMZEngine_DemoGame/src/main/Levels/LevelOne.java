@@ -41,9 +41,11 @@ public class LevelOne extends GameLevel {
 	    	createObject((k*64), 600, 64, 64, box, false);
 	    }
 
-	    for(int k = 13; k < 18; k++)
+	    int z = 1;
+	    for(int k = 12; k < 18; k++)
 	    {
-	    	createObject((k*64), 600, 64, 64, box, false);
+	    	createObject((k*64), 600 - (z*32), 64, 64, box, false);
+	    	z++;
 	    }
 	    
 	    //middle
@@ -68,15 +70,22 @@ public class LevelOne extends GameLevel {
 	    	createObject((k*64), 300, 64, 64, box, false);
 	    }
 	    
-	    for(int j = 0; j < 12; j++)
-	    {
-	    	createObject((j*32), 500, 16, 16, box, true);
-	    }
 	    createObject(640, 550, 32, 32, box, true);
 	    
-	    //createObject(300, 400, 34, 56, i, false);
+	    // 1. AI
 	    addUser(0, 500, 34, 68, ui);
 	    addAI(100, 575, 25, 25, ai);
+	    
+	    // 2. AI with impediment
+	    //addUser(300, 380, 34, 68, ui);
+	    //addAI(100, 575, 25, 25, ai);
+	    
+	    // 3. Shockwave
+	    //addUser(200, 530, 34, 68, ui);
+	    //for(int j = 0; j < 12; j++)
+	    //{
+	    //	createObject((j*32), 500, 16, 16, box, true);
+	    //}
 	}
 
 }
