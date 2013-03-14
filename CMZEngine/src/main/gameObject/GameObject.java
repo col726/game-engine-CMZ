@@ -43,6 +43,8 @@ public class GameObject {
 	private animation a;
 	
 	private Sprite sprite;
+
+	public boolean visulizeSound;
 	
 	
 	public GameObject(int x, int y)
@@ -96,7 +98,7 @@ public class GameObject {
 		
 		try {
 			defaultSound = new GameSound(soundFile, true, p, w);
-			defaultSound.setLoop(0);
+			//defaultSound.setLoop(0);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

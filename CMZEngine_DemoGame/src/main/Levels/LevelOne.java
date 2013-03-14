@@ -56,6 +56,11 @@ public class LevelOne extends GameLevel {
 	    	createObject((k*64), 600, 64, 64, box, false);
 	    }
 	    
+	    
+	    for(int j = 0; j < 12; j++)
+	    {
+	    	createObject((j*32), 500, 16, 16, box, true);
+	    }
 	    createObject(640, 550, 32, 32, box, true);
 	    
 	    

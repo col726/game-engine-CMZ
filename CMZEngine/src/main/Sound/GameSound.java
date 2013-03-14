@@ -95,5 +95,10 @@ public class GameSound {
 		// TODO Auto-generated method stub
 		return this.bodyDef;
 	}
+
+	public Body getSoundBody() {
+		return this.soundBody;
+		
+	}
 	
 }

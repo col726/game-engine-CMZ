@@ -23,6 +23,8 @@ public class GameLevel implements TileBasedMap {
 	protected ScreenManager s;
 	
 	private static final float MAX_SPEED = 10.5f;
+	private static final float MAX_DISTANCE = 30.0f;
+	private static final float MAX_FORCE = 9.0f;
 	private int TileWidth;
 	private int TileHeight;
 	private int PixelToTileWidth;
@@ -45,6 +47,7 @@ public class GameLevel implements TileBasedMap {
 	
 	protected GameSound LevelMusic;
 	protected Image LevelBackground;
+	int vCounter;
 	
 	public GameLevel(int height, int width) {
 		s = new ScreenManager();
@@ -62,6 +65,8 @@ public class GameLevel implements TileBasedMap {
 		
 		units = new int[TileWidth][TileHeight];
 		visited = new boolean[TileWidth][TileHeight];
+		
+		vCounter = 0;
 	}
 
 	public void setGoal(Goal goal) {
@@ -178,7 +183,7 @@ public class GameLevel implements TileBasedMap {
 
 	private void updateUserPhysics(String gameAction) {
 		Body body = User.getGameBody();
-		System.out.println(gameAction);
+		
 		if(gameAction == "Right")
 		{
 			if (Math.abs(body.getLinearVelocity().x) < MAX_SPEED)
@@ -200,11 +205,39 @@ public class GameLevel implements TileBasedMap {
 		if(gameAction == "Space")
 		{
 			User.getDefaultSound().play();
+			User.visulizeSound = true;
+			vCounter  = 0;
+		}
+		
+		if (User.visulizeSound && vCounter < 10)
+		{
+			for(int i = 0; i < LevelUnits.size(); i++)
+			{
+				Body temp = LevelUnits.get(i).getGameBody();
+				float d = distance(User.getGameBody().getWorldCenter(), temp.getWorldCenter()); 
+				if (d < MAX_DISTANCE)
+				{
+					float strength = MAX_DISTANCE - d;
+					float force = strength * MAX_FORCE;
+					
+					float angle = (float)Math.atan2(temp.getWorldCenter().y - User.getGameBody().getWorldCenter().y, temp.getWorldCenter().x - User.getGameBody().getWorldCenter().x);
+					
+					temp.applyLinearImpulse(new Vec2((float)Math.sin(angle) * force, (float)Math.cos(angle) * force), temp.getWorldCenter());
+				}
+			}
+			
+			User.getDefaultSound().getSoundBody().setBullet(true);
+			vCounter++;
 		}
 		
 		User.updatePosition();
 	}
 	
+	private float distance(Vec2 v1, Vec2 v2) {
+		// TODO Auto-generated method stub
+		return (float)Math.sqrt(Math.pow((v2.x - v1.x), 2) + Math.pow((v2.y - v1.y), 2));
+	}
+
 	private void updateLevelPhysics() {
 		
 		for(int i = 0; i < LevelUnits.size(); i++)
