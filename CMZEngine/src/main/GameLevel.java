@@ -49,6 +49,9 @@ public class GameLevel implements TileBasedMap {
 	protected Image LevelBackground;
 	int vCounter;
 	
+	private final int USER = -1;
+	private final int WALL = 999;
+	
 	public GameLevel(int height, int width) {
 		s = new ScreenManager();
 		DisplayMode dm = s.getCurrentDisplayMode();
@@ -94,7 +97,13 @@ public class GameLevel implements TileBasedMap {
 
 	@Override
 	public boolean blocked(Mover mover, int x, int y) {
-		// TODO Auto-generated method stub
+		//System.out.println(x + ", " + y + " : " + getUnit(x, y));
+		if (getUnit(x,y) == WALL) {
+			return true;
+		}
+		if (getUnit(x,y) == USER) {
+			return true;
+		}
 		return false;
 	}
 
@@ -112,11 +121,29 @@ public class GameLevel implements TileBasedMap {
 		int tileY = (int)(y / PixelToTileHeight);
 		units[tileX][tileY] = unitID;
 		
-		System.out.println("Unit " + unitID + " : " + x + " => " + tileX + "; " + y + " => " + tileY);
+		//System.out.println("Unit " + unitID + " : " + x + " => " + tileX + "; " + y + " => " + tileY);
 	}
 	
-	public void setUnit(int x, int y, int w, int h, int unit) {
-		units[x][y] = unit;
+	public void setUnit(int x, int y, int w, int h, int unitID) {
+		int xLow = (int)(x / PixelToTileWidth);
+		int yLow = (int)(x / PixelToTileHeight);
+		//System.out.println(unitID);
+		for(int tileX = x; tileX < x + w; tileX++)
+		{
+			for(int tileY = y; tileY < y + h; tileY++)
+			{
+				units[tileX][tileY] = unitID;
+				//System.out.println(tileX + ", " + tileY + " : " + getUnit(tileX, tileY));
+			}
+		}
+		//System.out.println(x + ", " + y + ", " + w + ", " + h);
+		//System.out.println(x + ", " + y + " : " + getUnit(x, y));
+	}
+	
+	public int getUnit(int x, int y) {
+		int tileX = (int)(x / PixelToTileWidth);
+		int tileY = (int)(y / PixelToTileHeight);
+		return units[x][y];
 	}
 	
 	public GameObject getUnit(int unitID) {
@@ -130,8 +157,12 @@ public class GameLevel implements TileBasedMap {
 		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
 		
 		LevelUnits.add(go);
-		int unitID = LevelUnits.lastIndexOf(go);
-		setUnit(x, y, unitID);
+		int unitID = LevelUnits.indexOf(go);
+		if(!isMovable)
+		{
+			unitID = WALL;
+		}
+		setUnit(x, y, w, h, unitID);
 	}
 	
 	public void createObject(int x, int y, int w, int h, Image i, boolean isMovable, File soundFile)
@@ -141,8 +172,12 @@ public class GameLevel implements TileBasedMap {
 		go.setGameBody(this.jBoxWorld.createBody(go.getBodyDef()));
 		
 		LevelUnits.add(go);
-		int unitID = LevelUnits.lastIndexOf(go);
-		setUnit(x, y, unitID);
+		int unitID = LevelUnits.indexOf(go);
+		if(!isMovable)
+		{
+			unitID = WALL;
+		}
+		setUnit(x, y, w, h, unitID);
 	}
 	
 	public void addUser(int x, int y, int w, int h, Image i) {
@@ -158,16 +193,16 @@ public class GameLevel implements TileBasedMap {
 		User.getDefaultSound().setSoundBody(this.jBoxWorld.createBody(User.getDefaultSound().getBodyDef()));
 		
 		int unitID = -1;
-		setUnit(x, y, unitID);
+		setUnit(x, y, w, h, unitID);
 	}
 	
 	public void addAI(int x, int y, int w, int h, Image i) {
-		GameObject ai = new GameObject(new Vec2(x, y), w, h, i, false);
+		GameObject ai = new GameObject(new Vec2(x, y), w, h, i, true);
 		
 		ai.setGameBody(this.jBoxWorld.createBody(ai.getBodyDef()));
 		LevelUnits.add(ai);
-		int unitID = LevelUnits.lastIndexOf(ai);
-		setUnit(x, y, unitID);
+		int unitID = LevelUnits.indexOf(ai);
+		setUnit(x, y, w, h, unitID);
 
 		AIUnitID = unitID;
 		AIUnit = new AIModule(AIUnitID, this);

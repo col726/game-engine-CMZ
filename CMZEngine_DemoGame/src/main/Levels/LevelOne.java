@@ -31,31 +31,42 @@ public class LevelOne extends GameLevel {
 	    this.LevelBackground = new ImageIcon("res/images/game_background.jpg").getImage();
 	    
 	    Image ui = new ImageIcon("res/images/sprite0.png").getImage();
-	    //addUser(200, 400, ui.getWidth(null), ui.getHeight(null), ui);
-	    
-	    //this.User.addScenetoAnimation(new ImageIcon("res/images/sprite1.png").getImage());
-	    //this.User.addScenetoAnimation(new ImageIcon("res/images/sprite2.png").getImage());
-	    //this.User.addScenetoAnimation(new ImageIcon("res/images/sprite3.png").getImage());
-	    
-
-	    //Image i = new ImageIcon("res/images/sprite0.png").getImage();
-	    //createObject(300, 400, 34, 56, i, false);
-
 	    Image ai = new ImageIcon("res/images/sprite02.png").getImage();
-	    addAI(100, 400, 25, 25, ai);
-	    
 	    Image i = new ImageIcon("res/images/sprite0.png").getImage();
-	    createObject(300, 400, 34, 56, i, false);
-	    
 	    Image box = new ImageIcon("res/images/box128.png").getImage();
-	    addUser(0, 500, 34, 68, ui);
 	    
-	    
+	    //bottom
 	    for(int k = 0; k < 12; k++)
 	    {
 	    	createObject((k*64), 600, 64, 64, box, false);
 	    }
+
+	    for(int k = 13; k < 18; k++)
+	    {
+	    	createObject((k*64), 600, 64, 64, box, false);
+	    }
 	    
+	    //middle
+	    for(int k = 0; k < 3; k++)
+	    {
+	    	createObject((k*64), 450, 64, 64, box, false);
+	    }
+	    
+	    for(int k = 4; k < 10; k++)
+	    {
+	    	createObject((k*64), 450, 64, 64, box, false);
+	    }
+	    
+	    //top
+	    for(int k = 0; k < 6; k++)
+	    {
+	    	createObject((k*64), 300, 64, 64, box, false);
+	    }
+	    
+	    for(int k = 7; k < 10; k++)
+	    {
+	    	createObject((k*64), 300, 64, 64, box, false);
+	    }
 	    
 	    for(int j = 0; j < 12; j++)
 	    {
@@ -63,9 +74,9 @@ public class LevelOne extends GameLevel {
 	    }
 	    createObject(640, 550, 32, 32, box, true);
 	    
-	    
-	    //Image i2 = new ImageIcon("res/images/floor.png").getImage();
-		//createObject(0, 600, 400, 50, i2, false)
+	    //createObject(300, 400, 34, 56, i, false);
+	    addUser(0, 500, 34, 68, ui);
+	    addAI(100, 575, 25, 25, ai);
 	}
 
 }

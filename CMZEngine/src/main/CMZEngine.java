@@ -79,7 +79,7 @@ public class CMZEngine {
 	
 	public void UpdateAI(String gameAction) {
 		// TODO Auto-generated method stub
-		System.out.println("Updating AI..." + gameAction);
+		//System.out.println("Updating AI..." + gameAction);
 		engine_log += "\nUpdating AI..." + gameAction;
 		
 	}
